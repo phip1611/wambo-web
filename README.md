@@ -1,27 +1,28 @@
-# WamboWeb
+# Wambo Web
+Wambo Web is a simple web app to convert numbers (including fractions between multiple numeral systems,
+to interpret binary data as different sized integers, to transform a f32 value into integer bytes, 
+or to check out the memory alignment of different endiannesses in a convienently. It is mainly
+useful for low level developers and everyone who wants to understand more about bits, bytes, 
+and sizes of different data types.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.5.
+# Technology stack
+This project is build using Angular 11.1 and Bootstrap 5.
 
-## Development server
+# How To Deploy / Run
+## Apache web server
+Build Wambo Web using `$ sh ./build.sh`. Copy the output of `./dist/wambo-web` including 
+all files into a directory where your Apache Webserver serves static content. Note that an optimized
+`.htaccess` files is already inside the built.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Docker
+Build Wambo Web using `$ sh ./build-docker.sh`, which creates the image `phip1611/wambo-web`. 
+Inside the image there is a nginx web server which delivers the static content and takes 
+care of 404 as well. It delivers statically compressed GZIP and BROTLI files out of the box.
+You can run it using: \
+`$ docker run --rm --name "wambo-web" -p 127.0.0.1:80:80 phip1611/wambo-web`
 
-## Code scaffolding
+# Trivia
+This project is free from external resources during runtime. It doesn't collect any data 
+nor sends your IP to other domains.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+There is an CLI version written in Rust of this: https://crates.io/crates/wambo 

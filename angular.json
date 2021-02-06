@@ -35,7 +35,7 @@
               "src/favicon.ico",
               "src/assets",
               "src/404.html",
-              "src/.htaccess"
+              ".htaccess"
             ],
             "styles": [
               "src/styles.scss"
