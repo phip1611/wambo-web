@@ -35,7 +35,8 @@
               "src/favicon.ico",
               "src/assets",
               "src/404.html",
-              ".htaccess"
+              // must start with src, otherwise error
+              "src/.htaccess"
             ],
             "styles": [
               "src/styles.scss"

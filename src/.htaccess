@@ -1,6 +1,9 @@
 # https://github.com/h5bp/html5-boilerplate/blob/master/dist/.htaccess
 # DOWNLOADED ON 2020-01-01
 
+# only used in apache mode; not used in docker image, because
+# NGINX is used there.
+
 # Apache Server Configs v4.0.0 | MIT License
 # https://github.com/h5bp/server-configs-apache
 
