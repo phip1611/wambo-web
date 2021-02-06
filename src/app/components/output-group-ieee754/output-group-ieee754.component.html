@@ -1,0 +1,33 @@
+<!-- h-100: make sure each card is as high as the highest card in the row  -->
+<div class="card h-100" *ngIf="parsed">
+  <div class="card-body">
+    <h5 class="card-title">Bits as IEEE-754 (float/double)</h5>
+    <small class="text-muted">Interpreting the lowest 32/64 bits (takes whole part of user input w/o sign).</small>
+    <div class="table-responsive">
+      <table class="table table-striped mb-0 mt-1">
+        <tbody>
+        <tr title="f32: float (single precision)">
+          <td>f32</td>
+          <td class="text-success"><mono>{{output.f32}}</mono></td>
+        </tr>
+        <tr title="f64: double (double precision)">
+          <td>f64</td>
+          <td class="text-success"><mono>{{output.f64}}</mono></td>
+        </tr>
+        <tr title="Unsigned integer bits (u64) of decimal {{parsed.unsignedWholePart.toString()}}">
+          <td class="text-muted">bits</td>
+          <td class="text-muted">
+            <mono class="bits-small">{{output.bits}}</mono>
+            <mono class="bits-small text-nowrap">64------56------48------40------32------24------16-------8-------0</mono>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <small class="d-block mt-2 text-muted">
+        ⚠️ To learn more about IEEE-754 see <a class="link-primary" href="https://www.h-schmidt.net/FloatConverter/IEEE754.html"
+                                               title="h-schmidt.net - Float Converter" target="_blank">this interactive online IEEE-754 converter</a>
+        for more information.
+      </small>
+    </div>
+  </div>
+</div>

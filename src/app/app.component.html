@@ -1,0 +1,41 @@
+<div class="container mt-3 mt-md-5">
+  <div class="row">
+    <div class="col-12 col-md-6">
+      <app-number-input></app-number-input>
+    </div>
+    <div class="col-12 mt-2 col-md-6 mt-md-0">
+      <app-numeral-systems-output-group></app-numeral-systems-output-group>
+    </div>
+  </div>
+  <div class="row mt-2 mt-md-4" *ngIf="hasData">
+    <div class="col-12 col-md-6">
+      <app-units-output-group></app-units-output-group>
+    </div>
+    <div class="col-12 mt-2 col-md-6 mt-md-0">
+      <app-base1024-units-output-group></app-base1024-units-output-group>
+    </div>
+  </div>
+  <div class="row mt-2 mt-md-4" *ngIf="hasData && !isFraction">
+    <div class="col-12 col-md-6">
+      <app-signed-integers-output-group></app-signed-integers-output-group>
+    </div>
+    <div class="col-12 mt-2 col-md-6 mt-md-0">
+      <app-unsigned-integers-output-group></app-unsigned-integers-output-group>
+    </div>
+  </div>
+  <div class="row mt-2 mt-md-4" *ngIf="hasData && !isFraction">
+    <div class="col-12 col-md-6">
+      <app-output-group-ieee754></app-output-group-ieee754>
+    </div>
+    <div class="col-12 mt-2 col-md-6 mt-md-0">
+      <app-endianness-output-group></app-endianness-output-group>
+    </div>
+  </div>
+
+  <div class="row mt-2 mt-md-4 d-print-none">
+    <div class="col-12">
+      <app-site-info></app-site-info>
+    </div>
+  </div>
+
+</div>

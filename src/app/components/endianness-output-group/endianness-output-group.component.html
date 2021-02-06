@@ -1,0 +1,52 @@
+<!-- h-100: make sure each card is as high as the highest card in the row  -->
+<div class="card h-100" *ngIf="parsed">
+  <div class="card-body">
+    <h5 class="card-title">Endianness</h5>
+    <small class="text-muted">Interprets the input (takes whole part w/o sign) and shows how the bytes would be stored in memory in big endian and little endian format.</small>
+    <div class="table-responsive">
+      <table class="table table-striped mb-0 mt-1">
+        <tbody>
+        <tr>
+          <td>System endianness</td>
+          <td class="text-danger">{{output.systemEndianness}}</td>
+        </tr>
+        <tr>
+          <td>u32 value/literal</td>
+          <td class="text-danger">
+            <mono class="bits-small text-nowrap">32------24------16-------8-------0</mono>
+            <mono class="bits-small text-nowrap">{{output.u32Bits}}</mono>
+            <mono class="bits-small text-nowrap">&nbsp;&nbsp;|Byte 3||Byte 2||Byte 1||Byte 0|</mono>
+            <mono class="bits-small text-nowrap">&nbsp;&nbsp;<abbr title="most significant byte">[MSB]</abbr>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <abbr title="least significant byte">[LSB]</abbr></mono>
+          </td>
+        </tr>
+        <tr>
+          <td>value as BE in mem</td>
+          <td class="text-danger">
+            <mono class="bits-small text-nowrap">... memory grows upwards ...</mono>
+            <mono class="bits-small text-nowrap">0x56784003:&nbsp;&nbsp;{{output.byteLE0}} <abbr title="least significant byte">[LSB]</abbr></mono>
+            <mono class="bits-small text-nowrap">0x56784002:&nbsp;&nbsp;{{output.byteLE1}}</mono>
+            <mono class="bits-small text-nowrap">0x56784001:&nbsp;&nbsp;{{output.byteLE2}}</mono>
+            <mono class="bits-small text-nowrap">0x56784000:&nbsp;&nbsp;{{output.byteLE3}} <abbr title="most significant byte">[MSB]</abbr> <-- pointer/address of u32 value</mono>
+          </td>
+        </tr>
+        <tr>
+          <td>value as LE in mem</td>
+          <td class="text-danger">
+            <mono class="bits-small text-nowrap">... memory grows upwards ...</mono>
+            <mono class="bits-small text-nowrap">0x56784003:&nbsp;&nbsp;{{output.byteLE3}} <abbr title="most significant byte">[MSB]</abbr></mono>
+            <mono class="bits-small text-nowrap">0x56784002:&nbsp;&nbsp;{{output.byteLE2}}</mono>
+            <mono class="bits-small text-nowrap">0x56784001:&nbsp;&nbsp;{{output.byteLE1}}</mono>
+            <mono class="bits-small text-nowrap">0x56784000:&nbsp;&nbsp;{{output.byteLE0}} <abbr title="least significant byte">[LSB]</abbr> <-- pointer/address of u32 value</mono>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <small class="d-block mt-2 text-muted">
+        ⚠️ Please note that the system endianness is not necessarily the endianness of your processor.
+        Your JavaScript runtime could implement its own behaviour. The memory addresses in the example were chosen at will.
+      </small>
+    </div>
+  </div>
+</div>

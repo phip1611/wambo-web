@@ -1,0 +1,73 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "scss/bootstrap";
+
+body {
+  //  2020-12-28
+  // https://www.toptal.com/designers/subtlepatterns/double-bubble-dark-pattern/
+  // LICENSE https://creativecommons.org/licenses/by-sa/3.0/
+  background: url("assets/double-bubble-dark/double-bubble-dark.png") repeat;
+}
+
+input.ng-dirty.ng-invalid {
+  border: 2px solid #f54141;
+}
+
+.text-yellow {
+  color: #a28100;
+}
+
+.text-purple {
+  color: #5a00ab;
+}
+
+.footer {
+  border-top: 1px solid #444;
+  text-align: center;
+  font-size: 0.8rem;
+
+  &__link {
+    display: inline-block;
+    padding: 0 2rem;
+    color: #888;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    border: 1px solid transparent;
+    border-radius: 5px;
+
+    &:hover, &:active, &:focus {
+      color: #fff;
+      text-decoration: none;
+      border: 1px solid #fff;
+      outline: none;
+    }
+  }
+}
+
+// <h1>
+.app-title {
+  font-size: 1.3rem;
+
+  // <strong> that is highlighted
+  &__highlighted {
+    color: #b70406;
+  }
+}
+
+#numberInputHelp {
+  .accordion-header {
+    background-color: #f5f5f5;
+  }
+}
+
+// class for all output bits to help visualize
+// whats happening
+.bits-small {
+  font-size: 0.8rem;
+}
+
+// remove underlined links
+// thats bootstrap 5.0 stuff.. disgusting
+.link-primary {
+  text-decoration: none;
+}

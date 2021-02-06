@@ -1,0 +1,34 @@
+<!-- h-100: make sure each card is as high as the highest card in the row  -->
+<div class="card h-100" *ngIf="parsed">
+  <div class="card-body">
+    <h5 class="card-title">Value in Several Numeral Systems</h5>
+    <div class="table-responsive">
+      <table class="table table-striped mb-0 mt-1">
+        <tbody>
+        <tr>
+          <td>bin (<code>0b</code>)</td>
+          <td class="text-success"><mono>{{output.bin}}</mono></td>
+        </tr>
+        <tr>
+          <td>oct (<code>0o</code>)</td>
+          <td class="text-success"><mono>{{output.oct}}</mono></td>
+        </tr>
+        <tr>
+          <td>dec</td>
+          <td class="text-success"><mono>{{output.dec}}</mono></td>
+        </tr>
+        <tr>
+          <td>hex (<code>0x</code>)</td>
+          <td class="text-success"><mono>{{output.hex}}</mono></td>
+        </tr>
+        </tbody>
+      </table>
+      <small class="d-block mt-2 text-muted" *ngIf="!!parsed.unsignedFractionPart">
+        ⚠️ Please note that there are conversion errors when transforming
+        fraction parts between numeral systems.
+        See <a class="link-primary" href="https://planetcalc.com/862/" title="Planetcalc - Conversion of fractional numbers between numeral systems" target="_blank">this online calculator</a> for more information
+        about fraction part conversion error.
+      </small>
+    </div>
+  </div>
+</div>

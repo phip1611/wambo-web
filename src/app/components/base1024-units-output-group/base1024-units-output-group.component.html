@@ -1,0 +1,29 @@
+<!-- h-100: make sure each card is as high as the highest card in the row  -->
+<div class="card h-100" *ngIf="parsed">
+  <div class="card-body">
+    <h5 class="card-title">Value in Different *bi-Units (factor 1024)</h5>
+    <small class="text-muted">Decimal value is used here as base. (<code>1024 Byte == 1 Kibibyte</code>)</small>
+    <div class="table-responsive">
+      <table class="table table-striped mb-0 mt-1">
+        <tbody>
+        <tr title="{{parsed.signedNumericValue.toString()}} in Kibibytes (KiB)">
+          <td>KiB</td>
+          <td class="text-danger"><mono>{{output.kib}}</mono></td>
+        </tr>
+        <tr title="{{parsed.signedNumericValue.toString()}} in Mebibytes (MiB)">
+          <td>MiB</td>
+          <td class="text-danger"><mono>{{output.mib}}</mono></td>
+        </tr>
+        <tr title="{{parsed.signedNumericValue.toString()}} in Gibibytes (GiB)">
+          <td>GiB</td>
+          <td class="text-danger"><mono>{{output.gib}}</mono></td>
+        </tr>
+        <tr title="{{parsed.signedNumericValue.toString()}} in Tebibytes (TiB)">
+          <td>TiB</td>
+          <td class="text-danger"><mono>{{output.tib}}</mono></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

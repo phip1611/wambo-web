@@ -1,0 +1,83 @@
+<footer class="footer my-1 py-1">
+  <a href="#" class="footer__link {{bootstrapClasses}}" title="About this site"
+     data-bs-toggle="modal" data-bs-target="#siteInfoModal"
+  >About this site</a>
+  <a href="#" class="footer__link {{bootstrapClasses}}" title="Privacy / Datenschutzerklärung"
+     data-bs-toggle="modal" data-bs-target="#privacyInfoModal"
+  >Privacy / Datenschutzerklärung</a>
+  <a href="#" class="footer__link {{bootstrapClasses}}" title="Legal / Impressum"
+     data-bs-toggle="modal" data-bs-target="#legalInfoModal"
+  >Legal / Impressum</a>
+</footer>
+
+<!-- Modal Dialog About this site. -->
+<div class="modal fade" id="siteInfoModal" tabindex="-1" aria-labelledby="siteInfoModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="siteInfoModalLabel">About this site</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>
+          This is a non-commercial site without user tracking.
+          I don't make any money from this. I built it to help others and for fun.
+          You can support this project with code contributions on github TODO insert link.
+        </p>
+        <p>
+          This site was built using <a class="link-primary" href="https://angular.io" target="_blank" title="angular">angular</a> and
+          <a class="link-primary" href="https://getbootstrap.com/" target="_blank" title="bootstrap">bootstrap</a>>. It also heavily
+          relies on the great <a class="link-primary" href="https://github.com/MikeMcl/bignumber.js/" target="_blank">bignumber.js</a>
+          library.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Dialog Privacy -->
+<div class="modal fade" id="privacyInfoModal" tabindex="-1" aria-labelledby="privacyInfoModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="privacyInfoModalLabel">Privacy Notice / Datenschutzerklärung</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+        </button>
+      </div>
+      <div class="modal-body">
+        This site uses no cookies and no user tracking or advertising at all.
+        It also doesn't include any external resources.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Dialog Legal -->
+<div class="modal fade" id="legalInfoModal" tabindex="-1" aria-labelledby="legalInfoModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="legalInfoModalLabel">Legal / Impressum</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+        </button>
+      </div>
+      <div class="modal-body">
+        Philipp Schuster<br>
+        phip1611@gmail.com<br>
+        Pfotenhauerstraße 68<br/>
+        01307 Dresden<br/>
+        Deutschland
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

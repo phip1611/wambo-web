@@ -1,0 +1,13 @@
+{
+  "name": "Wambo Web – numeral systems converter, bits interpreter, and unit converter",
+  "short_name": "Wambo Web",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color" : "#fff" ,
+  "description": "Numeral systems converter (including fractions), bits interpreter and file size/unit converter.",
+  "icons": [{
+    "src": "/assets/logo_512x512.png",
+    "sizes": "512x512",
+    "type": "image/png"
+  }]
+}
