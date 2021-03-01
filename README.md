@@ -1,6 +1,6 @@
 # Wambo Web
 
-**Wambo can be found on the web: [wambo-web.de](wambo-web.de)**
+**Wambo can be found on the web: [wambo-web.de](https://wambo-web.de)**
 
 Wambo Web is a simple web app to convert numbers (including fractions) between multiple numeral systems,
 to interpret binary data as different sized integers, to transform a f32 value into integer bytes, 
