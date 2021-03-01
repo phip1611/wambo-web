@@ -6,7 +6,7 @@
   "background_color" : "#fff" ,
   "description": "Numeral systems converter (including fractions), bits interpreter and file size/unit converter.",
   "icons": [{
-    "src": "/assets/logo_512x512.png",
+    "src": "https://wambo-web.de/assets/logo_512x512.png",
     "sizes": "512x512",
     "type": "image/png"
   }]
