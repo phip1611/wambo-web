@@ -36,7 +36,9 @@
               "src/assets",
               "src/404.html",
               // must start with src, otherwise error
-              "src/.htaccess"
+              "src/.htaccess",
+              // must start with src, otherwise error
+              "src/robots.txt"
             ],
             "styles": [
               "src/styles.scss"
