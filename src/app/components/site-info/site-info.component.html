@@ -33,6 +33,11 @@
           relies on the great <a class="link-primary" href="https://github.com/MikeMcl/bignumber.js/" target="_blank" title="bignumber.js library">bignumber.js</a>
           library.
         </p>
+        <h5>3rd Party/Open Source Licenses</h5>
+        <p *ngIf="!openSourceLicenses">
+          <a href="/3rdpartylicenses.txt" title="3rd Party Licenses" target="_blank" class="link-primary">Click here to see 3rd Party/Open Source Licenses.</a>
+        </p>
+        <pre *ngIf="openSourceLicenses">{{openSourceLicenses}}</pre>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

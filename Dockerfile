@@ -1,6 +1,5 @@
 FROM nginx:1.19.6
 
-RUN apt-get update
 # to get nginx_more_headers
 # DON't do this, because there are version mismatches
 # especially when using custom dynamic modules like brotli
@@ -14,8 +13,8 @@ RUN apt-get update
 # we just need the nginx source code in order
 # to be able to build a dynamic module
 
-# wget tar
-RUN apt-get install -y git wget
+# always update first; docker guidlines
+RUN apt-get update && apt-get install -y git wget
 # MUST MATCH WITH FIRST LINE/MAIN VERSION
 RUN wget https://nginx.org/download/nginx-1.19.6.tar.gz
 RUN tar zxvf nginx-1.19.6.tar.gz
@@ -26,7 +25,7 @@ WORKDIR ngx_brotli
 RUN git submodule update --init
 WORKDIR ..
 
-RUN apt-get install -y build-essential libpcre3 libpcre3-dev zlib1g zlib1g-dev openssl libssl-dev
+RUN apt-get update && apt-get install -y build-essential libpcre3 libpcre3-dev zlib1g zlib1g-dev openssl libssl-dev
 WORKDIR nginx-1.19.6
 RUN ./configure --with-compat --add-dynamic-module=../ngx_brotli
 RUN make modules

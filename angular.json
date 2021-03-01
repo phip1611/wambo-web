@@ -22,7 +22,7 @@
           "options": {
             // https://angular.io/guide/build#configuring-commonjs-dependencies
             "allowedCommonJsDependencies": [
-              "bignumber.js"
+              "xregexp"
             ],
             "outputPath": "dist/wambo-web",
             "index": "src/index.html",
