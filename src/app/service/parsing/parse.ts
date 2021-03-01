@@ -22,7 +22,7 @@ export function parseNumberInput(normalizedParsingInput: string): ParseResult {
   console.log('normalized parsing input: ', normalizedParsingInput);
 
   const match = XRegExp.exec(normalizedParsingInput, NUMBER_INPUT_REGEX);
-  if (!match) {
+  if (!match || !match.groups) {
     throw new Error(`Doesn't match RegEx`);
   }
 
@@ -30,13 +30,13 @@ export function parseNumberInput(normalizedParsingInput: string): ParseResult {
   // further parsed (except sign because it is too basic)
 
   // sign is optional
-  const sign: boolean = !!match.sign;
-  const optNsString: string | null = match.ns ?? null;
-  const numericValueString: string = match.numeric_value;
+  const sign: boolean = !!match.groups.sign;
+  const optNsString: string | null = match.groups.ns ?? null;
+  const numericValueString: string = match.groups.numeric_value;
   if (!numericValueString) {
     throw new Error(`Numeric Value is missing!`);
   }
-  const optUnitString: string | null = match.unit ?? null;
+  const optUnitString: string | null = match.groups.unit ?? null;
 
   const unit = parseUnitFromString(optUnitString);
   const ns = parseNumeralSystemFromString(optNsString);

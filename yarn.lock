@@ -9999,10 +9999,10 @@ xmlhttprequest-ssl@~1.5.4:
   resolved "https://registry.yarnpkg.com/xmlhttprequest-ssl/-/xmlhttprequest-ssl-1.5.5.tgz#c2876b06168aadc40e57d97e81191ac8f4398b3e"
   integrity sha1-wodrBhaKrcQOV9l+gRkayPQ5iz4=
 
-xregexp@^4.4.1:
-  version "4.4.1"
-  resolved "https://registry.yarnpkg.com/xregexp/-/xregexp-4.4.1.tgz#c84a88fa79e9ab18ca543959712094492185fe65"
-  integrity sha512-2u9HwfadaJaY9zHtRRnH6BY6CQVNQKkYm3oLtC9gJXXzfsbACg5X5e4EZZGVAH+YIfa+QA9lsFQTTe3HURF3ag==
+xregexp@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/xregexp/-/xregexp-5.0.1.tgz#b2f20e87790876585fb4103e91cb163a63cd2547"
+  integrity sha512-flG0ykxHQLOfF886GpnY26WQkj4/RmcxYvoVcSFbg+1lPMdnXEPoTKuLzw1olKnJ+o2Wc1+RCD1oktV4bYzVlQ==
   dependencies:
     "@babel/runtime-corejs3" "^7.12.1"
 

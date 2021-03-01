@@ -163,7 +163,7 @@ const numberInputValidator: ValidatorFn = (control: AbstractControl): Validation
   }
   value = NumberInputComponent.normalizeInputForParsing(value);
   const match = XRegExp.exec(value, NUMBER_INPUT_REGEX);
-  if (!match || !match.numeric_value) {
+  if (!match || !match.groups?.numeric_value) {
     return {
       invalid: true
     };
