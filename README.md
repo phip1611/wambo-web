@@ -1,12 +1,17 @@
 # Wambo Web
-Wambo Web is a simple web app to convert numbers (including fractions between multiple numeral systems,
+
+**Wambo can be found on the web: [wambo-web.de](wambo-web.de)**
+
+Wambo Web is a simple web app to convert numbers (including fractions) between multiple numeral systems,
 to interpret binary data as different sized integers, to transform a f32 value into integer bytes, 
-or to check out the memory alignment of different endiannesses in a convienently. It is mainly
-useful for low level developers and everyone who wants to understand more about bits, bytes, 
-and sizes of different data types.
+or to check out the memory alignment of different endiannesses in a convenient, fast, and responsive way. 
+It is mainly useful for low level developers and everyone who wants to understand more about bits, bytes, 
+and sizes of different data units.
+
+![Screenshot of Wambo Web](screenshot.png "Screenshot of Wambo Web")
 
 # Technology stack
-This project is build using Angular 11.1 and Bootstrap 5.
+This project is build using `Angular 11`, `Bootstrap 5`, and `bignumber.js`.
 
 # How To Deploy / Run
 ## Apache web server
@@ -25,4 +30,4 @@ You can run it using: \
 This project is free from external resources during runtime. It doesn't collect any data 
 nor sends your IP to other domains.
 
-There is an CLI version written in Rust of this: https://crates.io/crates/wambo 
+There is an CLI version of this written in Rust: https://crates.io/crates/wambo 
