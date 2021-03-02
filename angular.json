@@ -35,6 +35,7 @@
               // must start with src, otherwise error
               "src/favicon.ico",
               "src/assets",
+              "src/403.html",
               "src/404.html",
               "src/.htaccess",
               "src/manifest.webmanifest",

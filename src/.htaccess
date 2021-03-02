@@ -100,6 +100,7 @@
 #
 # https://httpd.apache.org/docs/current/mod/core.html#errordocument
 
+ErrorDocument 403 /403.html
 ErrorDocument 404 /404.html
 
 # ----------------------------------------------------------------------
