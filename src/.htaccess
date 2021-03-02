@@ -893,7 +893,7 @@ ServerSignature Off
 
     RewriteCond %{HTTP:Accept-Encoding} br
     RewriteCond %{REQUEST_FILENAME}\.br -f
-    RewriteRule \.(css|ics|js|json|html|svg|ico)$ %{REQUEST_URI}.br [L]
+    RewriteRule \.(css|ics|js|json|html|svg|ico|webmanifest)$ %{REQUEST_URI}.br [L]
 
     # Prevent mod_deflate double gzip
     RewriteRule \.br$ - [E=no-gzip:1]
@@ -902,13 +902,14 @@ ServerSignature Off
 
         <IfModule mod_mime.c>
             # Serve correct content types
-            AddType text/css              css.br
-            AddType text/calendar         ics.br
-            AddType text/javascript       js.br
-            AddType application/json      json.br
-            AddType text/html             html.br
-            AddType image/svg+xml         svg.br
-            AddType image/x-icon          ico.br
+            AddType text/css                   css.br
+            AddType text/calendar              ics.br
+            AddType text/javascript            js.br
+            AddType application/json           json.br
+            AddType text/html                  html.br
+            AddType image/svg+xml              svg.br
+            AddType image/x-icon               ico.br
+            AddType application/manifest+json  webmanifest.br
 
             # Serve correct content charset
             AddCharset utf-8 .css.br \
@@ -949,7 +950,7 @@ ServerSignature Off
 
     RewriteCond %{HTTP:Accept-Encoding} gzip
     RewriteCond %{REQUEST_FILENAME}\.gz -f
-    RewriteRule \.(css|ics|js|json|html|svg|ico)$ %{REQUEST_URI}.gz [L]
+    RewriteRule \.(css|ics|js|json|html|svg|ico|webmanifest)$ %{REQUEST_URI}.gz [L]
 
     # Prevent mod_deflate double gzip
     RewriteRule \.gz$ - [E=no-gzip:1]
@@ -962,13 +963,14 @@ ServerSignature Off
             RemoveType gz
 
             # Serve correct content types
-            AddType text/css              css.gz
-            AddType text/calendar         ics.gz
-            AddType text/javascript       js.gz
-            AddType application/json      json.gz
-            AddType text/html             html.gz
-            AddType image/svg+xml         svg.gz
-            AddType image/x-icon          ico.gz
+            AddType text/css                   css.gz
+            AddType text/calendar              ics.gz
+            AddType text/javascript            js.gz
+            AddType application/json           json.gz
+            AddType text/html                  html.gz
+            AddType image/svg+xml              svg.gz
+            AddType image/x-icon               ico.gz
+            AddType application/manifest+json  webmanifest.gz
 
             # Serve correct content charset
             AddCharset utf-8 .css.gz \

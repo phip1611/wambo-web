@@ -2,7 +2,7 @@ const gulp = require('gulp');
 const gulp_gzip = require('gulp-gzip');
 const gulp_brotli = require('gulp-brotli');
 
-const filePattern = "dist/**/*.{js,css,html,txt,ico,svg,xml,json}";
+const filePattern = "dist/**/*.{js,css,html,txt,ico,svg,xml,json,webmanifest}";
 
 /*
   Dateien statisch vorkomprimieren, damit der nginx (oder apache)

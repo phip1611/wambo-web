@@ -32,12 +32,12 @@
             "aot": true,
             "assets": [
               // files that are copied to dist
+              // must start with src, otherwise error
               "src/favicon.ico",
               "src/assets",
               "src/404.html",
-              // must start with src, otherwise error
               "src/.htaccess",
-              // must start with src, otherwise error
+              "src/manifest.webmanifest",
               "src/robots.txt"
             ],
             "styles": [
