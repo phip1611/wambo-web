@@ -1,5 +1,5 @@
 {
-  "name": "Wambo Web – numeral systems converter, bits interpreter, and unit converter",
+  "name": "Wambo Web – Interactive Hex & Bits Converter",
   "short_name": "Wambo Web",
   "start_url": "/",
   "display": "standalone",
