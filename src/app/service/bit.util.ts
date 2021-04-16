@@ -17,7 +17,7 @@ export enum BitLength {
  * @param len length in bits
  */
 export function bignumberWholePartToUnsignedBitStringOfLength(num: BigNumber, len: BitLength): string {
-  let bitStr = num.toString(2);
+  const bitStr = num.toString(2);
   return '0b' + stringToExactLengthFromRightOrPadZerosLeft(bitStr, len);
 }
 
