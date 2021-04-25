@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {ParseResult} from '../../service/parsing/parse-result';
-import {ParsedInputService} from '../../service/parsed-input.service';
-import {bigNumberWholePartBitsToF32Value, bigNumberWholePartBitsToF64Value} from '../../service/ieee754-convert.util';
-import {bignumberWholePartToUnsignedBitStringOfLength, BitLength} from '../../service/bit.util';
+import { Component, OnInit } from '@angular/core';
+import { bignumberWholePartToUnsignedBitStringOfLength, BitLength } from '../../service/bit.util';
+import { bigNumberWholePartBitsToF32Value, bigNumberWholePartBitsToF64Value } from '../../service/ieee754-convert.util';
+import { ParsedInputService } from '../../service/parsed-input.service';
+import { ParseResult } from '../../service/parsing/parse-result';
 
 @Component({
   selector: 'app-output-group-ieee754',

@@ -1,8 +1,8 @@
-import {ParseResult} from './parse-result';
 import * as XRegExp from 'xregexp';
-import {fromUnitToBase, parseUnitFromString, Unit} from './unit';
-import {NumeralSystem, parseNumberStringAsNumeralSystem, parseNumeralSystemFromString} from './ns';
-import {splitBigNumberToWholeAndMaybeFractionPart} from '../bignumber.util';
+import { splitBigNumberToWholeAndMaybeFractionPart } from '../bignumber.util';
+import { NumeralSystem, parseNumberStringAsNumeralSystem, parseNumeralSystemFromString } from './ns';
+import { ParseResult } from './parse-result';
+import { fromUnitToBase, parseUnitFromString, Unit } from './unit';
 
 export const NUMBER_INPUT_REGEX = XRegExp(`
      ^                                  # string begin

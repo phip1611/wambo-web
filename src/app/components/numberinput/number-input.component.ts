@@ -1,11 +1,11 @@
-import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import {AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
-import {Subscription} from 'rxjs';
-import {NUMBER_INPUT_REGEX, parseNumberInput} from '../../service/parsing/parse';
-import {ParseResult} from '../../service/parsing/parse-result';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import * as XRegExp from 'xregexp';
-import {ParsedInputService} from '../../service/parsed-input.service';
-import {bigNumberAsDoubleToIntegerHexBits, bigNumberAsFloatToIntegerHexBits} from '../../service/ieee754-convert.util';
+import { bigNumberAsDoubleToIntegerHexBits, bigNumberAsFloatToIntegerHexBits } from '../../service/ieee754-convert.util';
+import { ParsedInputService } from '../../service/parsed-input.service';
+import { NUMBER_INPUT_REGEX, parseNumberInput } from '../../service/parsing/parse';
+import { ParseResult } from '../../service/parsing/parse-result';
 
 @Component({
   selector: 'app-number-input',

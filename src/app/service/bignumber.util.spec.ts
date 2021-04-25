@@ -1,5 +1,5 @@
 import BigNumber from 'bignumber.js';
-import {splitBigNumberToWholeAndMaybeFractionPart} from './bignumber.util';
+import { splitBigNumberToWholeAndMaybeFractionPart } from './bignumber.util';
 
 
 describe('splitBigNumberToWholeAndMaybeFractionPart', () => {

@@ -1,6 +1,6 @@
-import {Injectable} from '@angular/core';
-import {Observable, ReplaySubject} from 'rxjs';
-import {ParseResult} from './parsing/parse-result';
+import { Injectable } from '@angular/core';
+import { Observable, ReplaySubject } from 'rxjs';
+import { ParseResult } from './parsing/parse-result';
 
 @Injectable({providedIn: 'root'})
 export class ParsedInputService {

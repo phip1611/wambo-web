@@ -1,6 +1,6 @@
 import BigNumber from 'bignumber.js';
-import {bignumberWholePartToUnsignedBitStringOfLength, BitLength, fixedLengthBitStringByteArrayLE} from './bit.util';
-import {stringToExactLengthFromRightOrPadZerosLeft} from './string.util';
+import { bignumberWholePartToUnsignedBitStringOfLength, BitLength, fixedLengthBitStringByteArrayLE } from './bit.util';
+import { stringToExactLengthFromRightOrPadZerosLeft } from './string.util';
 
 /**
  * Takes the first 32 bits from the whole part of the given bignumber.

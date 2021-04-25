@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {ParseResult} from '../../service/parsing/parse-result';
-import {ParsedInputService} from '../../service/parsed-input.service';
-import {toSInt16, toSInt32, toSInt64, toSInt8} from '../../service/int-convert.util';
-import {bignumberWholePartToUnsignedBitStringOfLength, BitLength} from '../../service/bit.util';
+import { Component, OnInit } from '@angular/core';
+import { bignumberWholePartToUnsignedBitStringOfLength, BitLength } from '../../service/bit.util';
+import { toSInt16, toSInt32, toSInt64, toSInt8 } from '../../service/int-convert.util';
+import { ParsedInputService } from '../../service/parsed-input.service';
+import { ParseResult } from '../../service/parsing/parse-result';
 
 @Component({
   selector: 'app-signed-integers-output-group',

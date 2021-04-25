@@ -1,5 +1,5 @@
 import BigNumber from 'bignumber.js';
-import {bignumberWholePartToUnsignedBitStringOfLength, BitLength, fixedLengthBitStringByteArrayLE} from './bit.util';
+import { bignumberWholePartToUnsignedBitStringOfLength, BitLength, fixedLengthBitStringByteArrayLE } from './bit.util';
 
 describe('bit.util', () => {
 

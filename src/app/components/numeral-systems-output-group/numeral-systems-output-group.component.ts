@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {ParseResult} from '../../service/parsing/parse-result';
-import {ParsedInputService} from '../../service/parsed-input.service';
+import { Component, OnInit } from '@angular/core';
+import { ParsedInputService } from '../../service/parsed-input.service';
+import { ParseResult } from '../../service/parsing/parse-result';
 
 @Component({
   selector: 'app-numeral-systems-output-group',

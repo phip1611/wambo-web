@@ -1,4 +1,4 @@
-import {swapEndianness} from './endianness.util';
+import { swapEndianness } from './endianness.util';
 
 
 describe('endianness util', () => {
@@ -11,7 +11,6 @@ describe('endianness util', () => {
     const arrayBuffer4 = new ArrayBuffer(4);
     const u32Array = new Uint32Array(arrayBuffer4);
     const arrayBuffer8 = new ArrayBuffer(8);
-    // tslint:disable-next-line:variable-name
     const u32_2Array = new Uint32Array(arrayBuffer8);
 
     u8Array[0] = 0xff;

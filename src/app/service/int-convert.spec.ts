@@ -1,5 +1,5 @@
 import BigNumber from 'bignumber.js';
-import {toSInt16, toSInt32, toSInt64, toSInt8, toUInt16, toUInt32, toUInt64, toUInt8} from './int-convert.util';
+import { toSInt16, toSInt32, toSInt64, toSInt8, toUInt16, toUInt32, toUInt64, toUInt8 } from './int-convert.util';
 
 describe('int-convert', () => {
 

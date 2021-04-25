@@ -1,4 +1,4 @@
-import {back_substr, stringToExactLengthFromRightOrPadZerosLeft} from './string.util';
+import { back_substr, stringToExactLengthFromRightOrPadZerosLeft } from './string.util';
 
 describe('string.util', () => {
 

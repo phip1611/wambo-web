@@ -1,5 +1,5 @@
 import BigNumber from 'bignumber.js';
-import {bignumberWholePartToUnsignedBitStringOfLength, BitLength} from './bit.util';
+import { bignumberWholePartToUnsignedBitStringOfLength, BitLength } from './bit.util';
 
 /**
  * Converts a {@link BigNumber} to the value it would have

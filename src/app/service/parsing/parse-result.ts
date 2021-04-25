@@ -1,6 +1,6 @@
-import {Unit} from './unit';
-import {NumeralSystem} from './ns';
 import BigNumber from 'bignumber.js';
+import { NumeralSystem } from './ns';
+import { Unit } from './unit';
 
 export interface ParseResult {
   // Unit of input

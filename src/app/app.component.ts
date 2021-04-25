@@ -1,6 +1,6 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ParsedInputService} from './service/parsed-input.service';
-import {Subscription} from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { ParsedInputService } from './service/parsed-input.service';
 
 /**
  * The app component is responsible for disabling "information card" components in some conditions.

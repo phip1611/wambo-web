@@ -1,5 +1,5 @@
-import {parseNumberInput} from './parse';
 import BigNumber from 'bignumber.js';
+import { parseNumberInput } from './parse';
 
 describe('parse test', () => {
 

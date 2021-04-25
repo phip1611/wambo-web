@@ -1,4 +1,4 @@
-import {BitLength} from './bit.util';
+import { BitLength } from './bit.util';
 
 export enum Endianness {
   /**

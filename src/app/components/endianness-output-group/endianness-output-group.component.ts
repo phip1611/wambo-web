@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {ParseResult} from '../../service/parsing/parse-result';
-import {ParsedInputService} from '../../service/parsed-input.service';
-import {Endianness, getSystemEndianness} from '../../service/endianness.util';
-import {bignumberWholePartToUnsignedBitStringOfLength, BitLength} from '../../service/bit.util';
-import {back_substr} from '../../service/string.util';
+import { Component, OnInit } from '@angular/core';
+import { bignumberWholePartToUnsignedBitStringOfLength, BitLength } from '../../service/bit.util';
+import { Endianness, getSystemEndianness } from '../../service/endianness.util';
+import { ParsedInputService } from '../../service/parsed-input.service';
+import { ParseResult } from '../../service/parsing/parse-result';
+import { back_substr } from '../../service/string.util';
 
 @Component({
   selector: 'app-endianness-output-group',

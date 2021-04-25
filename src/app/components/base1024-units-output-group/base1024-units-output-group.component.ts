@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {ParseResult} from '../../service/parsing/parse-result';
-import {ParsedInputService} from '../../service/parsed-input.service';
-import {fromBaseToUnit, Unit} from '../../service/parsing/unit';
+import { Component, OnInit } from '@angular/core';
+import { ParsedInputService } from '../../service/parsed-input.service';
+import { ParseResult } from '../../service/parsing/parse-result';
+import { fromBaseToUnit, Unit } from '../../service/parsing/unit';
 
 @Component({
   selector: 'app-base1024-units-output-group',

@@ -20,7 +20,6 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            // https://angular.io/guide/build#configuring-commonjs-dependencies
             "allowedCommonJsDependencies": [
               "xregexp"
             ],
@@ -31,8 +30,6 @@
             "tsConfig": "tsconfig.app.json",
             "aot": true,
             "assets": [
-              // files that are copied to dist
-              // must start with src, otherwise error
               "src/favicon.ico",
               "src/assets",
               "src/403.html",
@@ -75,7 +72,6 @@
                   "maximumError": "4kb"
                 }
               ],
-              // true: adds "ngsw-config.json to ./dist during build
               "serviceWorker": true,
               "ngswConfigPath": "ngsw-config.json"
             }
@@ -117,15 +113,11 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json",
-              "e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
             ]
           }
         },
@@ -146,6 +138,7 @@
   },
   "defaultProject": "wambo-web",
   "cli": {
-    "packageManager": "yarn"
+    "packageManager": "yarn",
+    "defaultCollection": "@angular-eslint/schematics"
   }
 }
