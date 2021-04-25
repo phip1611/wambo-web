@@ -1,10 +1,12 @@
 {
   "name": "Wambo Web – Interactive Hex & Bits Converter",
   "short_name": "Wambo Web",
-  "start_url": "/",
-  "display": "standalone",
-  "background_color" : "#fff" ,
   "description": "Numeral systems converter (including fractions), bits interpreter and file size/unit converter.",
+  "theme_color": "#000000",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "scope": "./",
+  "start_url": "./",
   "icons": [
     {
       "src": "/assets/logo_48x48.png",

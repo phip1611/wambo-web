@@ -14,6 +14,8 @@ import {UnsignedIntegersOutputGroupComponent} from './components/unsigned-intege
 import {SiteInfoComponent} from './components/site-info/site-info.component';
 import {OutputGroupIeee754Component} from './components/output-group-ieee754/output-group-ieee754.component';
 import { EndiannessOutputGroupComponent } from './components/endianness-output-group/endianness-output-group.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,12 @@ import { EndiannessOutputGroupComponent } from './components/endianness-output-g
     CommonModule,
     // FormsModule,
     ReactiveFormsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
