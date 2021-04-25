@@ -185,7 +185,8 @@ export class NumberInputComponent implements OnInit, AfterViewInit, OnDestroy {
    */
   ngAfterViewInit(): void {
     // set focus to input element
-    this.numberInputElement?.nativeElement.focus();
+    // Already done in HTML via "autofocus" attribute
+    // this.numberInputElement?.nativeElement.focus();
 
     // this.setupOnBrowserNavigationChange();
 
