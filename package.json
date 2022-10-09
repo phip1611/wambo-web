@@ -5,7 +5,6 @@
     "ng": "ng",
     "start": "ng serve --open",
     "start_prod": "ng serve --open --configuration production",
-    "start_prod_public": "yarn build_prod && http-server -p 4200 -c-1 dist/wambo-web",
     "build": "ng build",
     "build_prod": "ng build --configuration production && gulp post_prod-build",
     "test": "ng test --watch=false",

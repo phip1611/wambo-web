@@ -18,10 +18,9 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
-      - run: yarn
-      - run: yarn test
-      - run: yarn build_prod
+      - run: npm ci
+      - run: npm test
+      - run: npm run build_prod
       - run: docker build -t phip1611/wambo-web .
 
   codestyle:
@@ -36,6 +35,5 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
-      - run: yarn
-      - run: yarn lint
+      - run: npm ci
+      - run: npm run lint
