@@ -1,3 +1,4 @@
-node_modules
+.angular
 .idea
-e2e
+.github
+node_modules
