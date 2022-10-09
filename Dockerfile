@@ -1,4 +1,4 @@
-FROM nginx:1.19.6
+FROM nginx:1.23.1
 
 # to get nginx_more_headers
 # DON't do this, because there are version mismatches
@@ -16,9 +16,9 @@ FROM nginx:1.19.6
 # always update first; docker guidlines
 RUN apt-get update && apt-get install -y git wget
 # MUST MATCH WITH FIRST LINE/MAIN VERSION
-RUN wget https://nginx.org/download/nginx-1.19.6.tar.gz
-RUN tar zxvf nginx-1.19.6.tar.gz
-RUN rm nginx-1.19.6.tar.gz
+RUN wget https://nginx.org/download/nginx-1.23.1.tar.gz
+RUN tar zxvf nginx-1.23.1.tar.gz
+RUN rm nginx-1.23.1.tar.gz
 
 RUN git clone https://github.com/google/ngx_brotli.git
 WORKDIR ngx_brotli
@@ -26,9 +26,9 @@ RUN git submodule update --init
 WORKDIR ..
 
 RUN apt-get update && apt-get install -y build-essential libpcre3 libpcre3-dev zlib1g zlib1g-dev openssl libssl-dev
-WORKDIR nginx-1.19.6
+WORKDIR nginx-1.23.1
 RUN ./configure --with-compat --add-dynamic-module=../ngx_brotli
-RUN make modules
+RUN make modules -j 4
 # --
 RUN mkdir -p /usr/share/nginx/modules
 RUN cp objs/ngx_http_brotli_filter_module.so /usr/share/nginx/modules
