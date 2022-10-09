@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { AbstractControl, UntypedFormBuilder, UntypedFormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import * as XRegExp from 'xregexp';
 import { bigNumberAsDoubleToIntegerHexBits, bigNumberAsFloatToIntegerHexBits } from '../../service/ieee754-convert.util';
@@ -13,7 +13,7 @@ import { ParseResult } from '../../service/parsing/parse-result';
 })
 export class NumberInputComponent implements OnInit, AfterViewInit, OnDestroy {
 
-  constructor(private fb: FormBuilder,
+  constructor(private fb: UntypedFormBuilder,
               private parsedInputService: ParsedInputService) {
   }
 
@@ -22,7 +22,7 @@ export class NumberInputComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('numberInputElement')
   private numberInputElement: ElementRef | null = null;
 
-  form: FormGroup | undefined = undefined;
+  form: UntypedFormGroup | undefined = undefined;
 
   inputChangeSubscription: Subscription | undefined = undefined;
 
