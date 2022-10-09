@@ -26,7 +26,7 @@
     "@angular/service-worker": "^14.2.5",
     "@types/xregexp": "^4.3.0",
     "bignumber.js": "^9.0.1",
-    "bootstrap": "^5.0.0-beta3",
+    "bootstrap": "^5.2.2",
     "rxjs": "~6.6.7",
     "tslib": "^2.2.0",
     "xregexp": "^5.0.2",
