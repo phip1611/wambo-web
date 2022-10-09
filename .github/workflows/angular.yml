@@ -1,0 +1,41 @@
+name: Wambo Web Angular Build
+
+# Triggers the workflow on push or pull request events for any branch in a repository.
+on: [ push, pull_request ]
+
+jobs:
+  # builds the regular build and bundles it in a docker container
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version:
+          # - 14.x
+          - 16.x
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
+      - run: yarn
+      - run: yarn test
+      - run: yarn build_prod
+      - run: docker build -t phip1611/wambo-web .
+
+  codestyle:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version:
+          - 16.x
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
+      - run: yarn
+      - run: yarn lint
