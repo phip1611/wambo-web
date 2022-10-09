@@ -142,10 +142,12 @@
       }
     }
   },
-  "defaultProject": "wambo-web",
   "cli": {
     "packageManager": "yarn",
     "defaultCollection": "@angular-eslint/schematics",
-    "analytics": false
+    "analytics": false,
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   }
 }
