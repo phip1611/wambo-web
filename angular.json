@@ -139,6 +139,7 @@
   "defaultProject": "wambo-web",
   "cli": {
     "packageManager": "yarn",
-    "defaultCollection": "@angular-eslint/schematics"
+    "defaultCollection": "@angular-eslint/schematics",
+    "analytics": false
   }
 }
