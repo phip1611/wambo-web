@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --open",
+    "start_ci": "ng serve",
     "start_prod": "ng serve --open --configuration production",
     "build": "ng build",
     "build_prod": "ng build --configuration production && gulp post_prod-build",
