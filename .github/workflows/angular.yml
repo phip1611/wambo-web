@@ -1,0 +1,48 @@
+name: Wambo Web Angular Build
+
+# Triggers the workflow on push or pull request events for any branch in a repository.
+on: [ push, pull_request ]
+
+jobs:
+  # builds the regular build and bundles it in a docker container
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version:
+          # - 14.x
+          - 16.x
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install NPM Dependencies
+        run:  npm ci
+      - name: Run Unit-Tests
+        run:  npm test
+      - name: Test `ng serve`
+        # Takes usually only 12 seconds but to prevent a flaky CI, I use a timeout of 60 secs
+        run:  timeout 60 npm run start_ci | grep -q "Compiled successfully"
+      - name: Build Angular UI
+        run:  npm run build_prod
+      - name: Build Docker Image
+        run:  docker build -t phip1611/wambo-web .
+
+  codestyle:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version:
+          - 16.x
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install NPM Dependencies
+        run:  npm ci
+      - name: Run ES Lint
+        run:  npm run lint
