@@ -25,7 +25,7 @@ WORKDIR ngx_brotli
 RUN git submodule update --init
 WORKDIR ..
 
-RUN apt-get update && apt-get install -y build-essential libpcre3 libpcre3-dev zlib1g zlib1g-dev openssl libssl-dev
+RUN apt-get update && apt-get install -y build-essential libpcre3 libpcre3-dev zlib1g zlib1g-dev openssl libssl-dev libbrotli-dev
 WORKDIR nginx-1.23.1
 RUN ./configure --with-compat --add-dynamic-module=../ngx_brotli
 RUN make modules -j 4
