@@ -4,8 +4,27 @@ name: Wambo Web Angular Build
 on: [ push, pull_request ]
 
 jobs:
-  # builds the regular build and bundles it in a docker container
-  build:
+  # Tests that "ng serve" / "npm start" works.
+  ng_serve:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version:
+          - 18.x
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install NPM Dependencies
+        run:  npm ci
+      - name: Test `ng serve`
+        # Takes usually only 12 seconds but to prevent a flaky CI, I use a timeout of 60 secs
+        run:  timeout 60 npm run start_ci | grep -q "Compiled successfully"
+
+  # Builds the web-app using NPM.
+  build_npm:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -21,11 +40,26 @@ jobs:
         run:  npm ci
       - name: Run Unit-Tests
         run:  npm test
-      - name: Test `ng serve`
-        # Takes usually only 12 seconds but to prevent a flaky CI, I use a timeout of 60 secs
-        run:  timeout 60 npm run start_ci | grep -q "Compiled successfully"
       - name: Build Angular UI
         run:  npm run build_prod
+      - name: Upload Web-App
+        uses: actions/upload-artifact@v3
+        with:
+          name: web-app
+          path: dist
+
+  # Builds the Docker image of the web app.
+  build_dockerimage:
+    runs-on: ubuntu-latest
+    needs: build_npm
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download Web-App from Previous Stage
+        uses: actions/download-artifact@v3
+        with:
+          name: web-app
+      - name: Move artifacts to expected directory
+        run: mkdir dist && mv wambo-web dist
       - name: Build Docker Image
         run:  docker build -t phip1611/wambo-web .
 
