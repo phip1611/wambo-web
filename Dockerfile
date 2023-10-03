@@ -13,7 +13,7 @@ FROM nginx:1.25.2
 # we just need the nginx source code in order
 # to be able to build a dynamic module
 
-# always update first; docker guidlines
+# always update first; docker guidelines
 RUN apt-get update && apt-get install -y git wget
 # MUST MATCH WITH FIRST LINE/MAIN VERSION
 RUN wget https://nginx.org/download/nginx-1.25.2.tar.gz

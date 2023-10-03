@@ -149,7 +149,7 @@ export class NumberInputComponent implements OnInit, AfterViewInit, OnDestroy {
           // store the input in the URL fragment for URL sharing
           NumberInputComponent.updateUrlFragment(input);
         } catch (e) {
-          console.error('catched error during parsing', e);
+          console.error('caught error during parsing', e);
           this.form?.get(`numberInput`)?.setErrors({
             invalid: true
           });
