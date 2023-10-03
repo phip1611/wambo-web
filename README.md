@@ -11,13 +11,20 @@ and sizes of different data units.
 ![Screenshot of Wambo Web](screenshot.png "Screenshot of Wambo Web")
 
 # Technology stack
-This project is build using `Angular 11`, `Bootstrap 5`, and `bignumber.js`.
+This project is build using `Angular`, `Bootstrap`, and `bignumber.js`.
+
+# How To Build
+## Regular
+- `$ npm install`
+- `$ npm run build_prod`
+## Nix (Flake)
+- `$ nix build .`
 
 # How To Deploy / Run
 ## Apache web server
 Build Wambo Web using `$ sh ./build.sh`. Copy the output of `./dist/wambo-web` including 
 all files into a directory where your Apache Webserver serves static content. Note that an optimized
-`.htaccess` files is already inside the built.
+`.htaccess` files is already inside the build.
 
 ## Docker
 Build Wambo Web using `$ sh ./build-docker.sh`, which creates the image `phip1611/wambo-web`. 
