@@ -48,7 +48,7 @@
     "gulp": "4.0.2",
     "gulp-brotli": "3.0.0",
     "gulp-gzip": "1.4.2",
-    "jasmine-core": "4.5.0",
+    "jasmine-core": "4.6.0",
     "karma": "6.4.1",
     "karma-chrome-launcher": "3.1.1",
     "karma-coverage": "2.2.0",
