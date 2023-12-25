@@ -73,7 +73,7 @@ jobs:
           # This channel is only required to invoke "nix-shell".
           # Everything inside that nix-shell will use a pinned version of
           # nixpkgs.
-          nix_path: nixpkgs=channel:nixos-23.05
+          nix_path: nixpkgs=channel:nixos-23.11
       - uses: DeterminateSystems/magic-nix-cache-action@main
       - run: nix build .
       - run: test -f ./result/share/wambo-web/index.html
