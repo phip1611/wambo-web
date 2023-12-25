@@ -17,5 +17,5 @@ pkgs.buildNpmPackage {
     mv dist $out/share
 
     runHook postInstall
-    '';
+  '';
 }
