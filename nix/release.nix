@@ -6,7 +6,7 @@ pkgs.buildNpmPackage {
 
   src = gitignoreSource ../.;
 
-  npmDepsHash = "sha256-3ycucT3Lai6CmL1O3W6pbnnoBTa6+bZdcbQCgt+5v6s=";
+  npmDepsHash = "sha256-nDhMr3eRxnxXZT5g0xPYUkDZVeV7Wno2M6Nyv9H0fzg=";
 
   npmBuildScript = "build_prod";
 
