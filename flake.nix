@@ -36,8 +36,15 @@
                   project
                 ];
 
+                packages = with pkgs; [
+                  nodejs_20
+                  fd # better find
+                  ouch
+                  brotli
+                ];
+
                 shellHook = ''
-                    '';
+                '';
               };
             };
 
