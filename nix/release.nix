@@ -14,6 +14,16 @@ pkgs.buildNpmPackage {
     brotli
   ];
 
+  /*
+  # Needed for the unit tests.
+  CHROME_BIN = "${pkgs.ungoogled-chromium}/bin/chromium";
+
+  doCheck = true;
+  checkPhase = ''
+    npm test
+  '';
+  */
+
   npmDepsHash = "sha256-kNtA1SM/7xdKHRczk+Ky6LSssbICtbnFS09q7LXBlso=";
 
   npmBuildScript = "build_prod";
