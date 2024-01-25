@@ -78,10 +78,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "wambo-web:build:production"
+              "buildTarget": "wambo-web:build:production"
             },
             "development": {
-              "browserTarget": "wambo-web:build:development"
+              "buildTarget": "wambo-web:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -89,7 +89,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "wambo-web:build"
+            "buildTarget": "wambo-web:build"
           }
         },
         "test": {
