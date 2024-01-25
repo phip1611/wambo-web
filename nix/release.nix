@@ -6,7 +6,15 @@ pkgs.buildNpmPackage {
 
   src = gitignoreSource ../.;
 
-  npmDepsHash = "sha256-nDhMr3eRxnxXZT5g0xPYUkDZVeV7Wno2M6Nyv9H0fzg=";
+  nodejs = pkgs.nodejs_20;
+
+  nativeBuildInputs = with pkgs; [
+    fd # better find
+    ouch
+    brotli
+  ];
+
+  npmDepsHash = "sha256-kNtA1SM/7xdKHRczk+Ky6LSssbICtbnFS09q7LXBlso=";
 
   npmBuildScript = "build_prod";
 

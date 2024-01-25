@@ -32,19 +32,7 @@
           {
             devShells = {
               default = pkgs.mkShell {
-                inputsFrom = [
-                  project
-                ];
-
-                packages = with pkgs; [
-                  nodejs_20
-                  fd # better find
-                  ouch
-                  brotli
-                ];
-
-                shellHook = ''
-                '';
+                inputsFrom = [ project ];
               };
             };
 

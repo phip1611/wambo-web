@@ -7,7 +7,7 @@ readarray -d '' files < <(fd --regex ".*\{js|css|html|txt|ico|svg|xml|json|webma
 for file in "${files[@]}"
 do
   ouch compress "$file" "$file.gz"
-  ouch compress --format zst "$file" "$file.zstd"
+  ouch compress "$file" "$file.zst"
   # ouch can't do brotli encoding so far
   #  ouch compress "$file" "$file.br"
   #  https://github.com/ouch-org/ouch/issues/604
