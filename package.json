@@ -28,7 +28,7 @@
     "@types/xregexp": "4.3.0",
     "bignumber.js": "9.1.0",
     "bootstrap": "5.2.2",
-    "rxjs": "7.5.7",
+    "rxjs": "7.8.1",
     "tslib": "2.4.1",
     "xregexp": "5.1.1",
     "zone.js": "0.14.3"
@@ -47,12 +47,12 @@
     "@typescript-eslint/eslint-plugin": "^6.10.0",
     "@typescript-eslint/parser": "^6.10.0",
     "eslint": "^8.53.0",
-    "jasmine-core": "4.5.0",
+    "jasmine-core": "5.1.0",
     "karma": "6.4.1",
-    "karma-chrome-launcher": "3.1.1",
+    "karma-chrome-launcher": "3.2.0",
     "karma-coverage": "2.2.0",
     "karma-jasmine": "5.1.0",
-    "karma-jasmine-html-reporter": "2.0.0",
+    "karma-jasmine-html-reporter": "2.1.0",
     "typescript": "5.3.3"
   }
 }
