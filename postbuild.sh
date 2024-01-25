@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-readarray -d '' files < <(fd --regex ".*\{js|css|html|txt|ico|svg|xml|json|webmanifest}" --full-path ./dist --print0)
+readarray -d '' files < <(fd --regex ".*(js|css|html|txt|ico|svg|xml|json|webmanifest)" --full-path ./dist --print0)
 
 for file in "${files[@]}"
 do
