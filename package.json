@@ -9,7 +9,7 @@
     "start_prod": "ng serve --open --configuration production",
     "build": "ng build",
     "build_prod": "ng build --configuration production && npm run postbuild",
-    "postbuild": "sh ./postbuild.sh",
+    "postbuild": "bash ./postbuild.sh",
     "test": "ng test --watch=false",
     "test-watch": "ng test",
     "lint": "ng lint"
