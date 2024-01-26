@@ -8,7 +8,7 @@
     "start_ci": "ng serve",
     "start_prod": "ng serve --open --configuration production",
     "build": "ng build",
-    "build_prod": "ng build --configuration production && npm run postbuild",
+    "build_prod": "ng build --configuration production --subresource-integrity && npm run postbuild",
     "postbuild": "bash ./postbuild.sh",
     "test": "ng test --watch=false",
     "test-watch": "ng test",
