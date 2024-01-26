@@ -32,12 +32,7 @@
           {
             devShells = {
               default = pkgs.mkShell {
-                inputsFrom = [
-                  project
-                ];
-
-                shellHook = ''
-                    '';
+                inputsFrom = [ project ];
               };
             };
 

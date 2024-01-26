@@ -10,10 +10,10 @@ jobs:
     strategy:
       matrix:
         node-version:
-          - 18.x
+          - 20.x # latest LTS
     steps:
       - uses: actions/checkout@v4
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Latest LTS Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
@@ -29,10 +29,10 @@ jobs:
     strategy:
       matrix:
         node-version:
-          - 18.x
+          - 20.x # latest LTS
     steps:
       - uses: actions/checkout@v4
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Latest LTS Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
@@ -43,7 +43,7 @@ jobs:
       - name: Build Angular UI
         run:  npm run build_prod
       - name: Upload Web-App
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: web-app
           path: dist
@@ -55,7 +55,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Download Web-App from Previous Stage
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: web-app
       - name: Move artifacts to expected directory
@@ -83,10 +83,10 @@ jobs:
     strategy:
       matrix:
         node-version:
-          - 18.x
+          - 20.x # latest LTS
     steps:
       - uses: actions/checkout@v4
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Latest LTS Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
