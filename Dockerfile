@@ -50,7 +50,7 @@ COPY nginx.conf /etc/nginx
 # copy angular app into nginx static content
 COPY ./dist/wambo-web /usr/share/nginx/html/
 # we don't need the .htaccess file in nginx :)
-RUN rm /usr/share/nginx/html/.htaccess
+RUN rm -f /usr/share/nginx/html/.htaccess
 # check nginx conf file
 RUN nginx -t
 # expose this volume
