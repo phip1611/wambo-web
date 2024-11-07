@@ -24,7 +24,7 @@ pkgs.buildNpmPackage {
   '';
   */
 
-  npmDepsHash = "sha256-kNtA1SM/7xdKHRczk+Ky6LSssbICtbnFS09q7LXBlso=";
+  npmDepsHash = "sha256-0Sq93D+vKZmTBsCoWUK2ZKfxRuP3GJrp1GkFtB9xp0A=";
 
   npmBuildScript = "build_prod";
 
