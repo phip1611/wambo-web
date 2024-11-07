@@ -6,7 +6,7 @@ pkgs.buildNpmPackage {
 
   src = gitignoreSource ../.;
 
-  nodejs = pkgs.nodejs_20;
+  nodejs = pkgs.nodejs_22;
 
   nativeBuildInputs = with pkgs; [
     fd # better find
