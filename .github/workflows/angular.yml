@@ -68,7 +68,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: cachix/install-nix-action@v30
+      - uses: cachix/install-nix-action@v31
         with:
           # This channel is only required to invoke "nix-shell".
           # Everything inside that nix-shell will use a pinned version of
