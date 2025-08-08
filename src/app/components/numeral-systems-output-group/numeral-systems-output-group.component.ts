@@ -3,12 +3,11 @@ import { ParsedInputService } from '../../service/parsed-input.service';
 import { ParseResult } from '../../service/parsing/parse-result';
 
 @Component({
-    selector: 'app-numeral-systems-output-group',
-    templateUrl: './numeral-systems-output-group.component.html',
-    standalone: false
+  selector: 'app-numeral-systems-output-group',
+  templateUrl: './numeral-systems-output-group.component.html',
+  standalone: false,
 })
 export class NumeralSystemsOutputGroupComponent implements OnInit {
-
   parsed: ParseResult | null = null;
   output = {
     bin: '',
@@ -17,10 +16,10 @@ export class NumeralSystemsOutputGroupComponent implements OnInit {
     hex: '',
   };
 
-  constructor(private service: ParsedInputService) { }
+  constructor(private service: ParsedInputService) {}
 
   ngOnInit(): void {
-    this.service.getInput$().subscribe(pr => {
+    this.service.getInput$().subscribe((pr) => {
       if (!!pr) {
         this.parsed = pr;
         this.output.bin = this.parsed.signedNumericValue.toString(2);
@@ -32,5 +31,4 @@ export class NumeralSystemsOutputGroupComponent implements OnInit {
       }
     });
   }
-
 }

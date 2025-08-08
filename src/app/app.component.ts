@@ -6,12 +6,11 @@ import { ParsedInputService } from './service/parsed-input.service';
  * The app component is responsible for disabling "information card" components in some conditions.
  */
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    standalone: false
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  standalone: false,
 })
 export class AppComponent implements OnInit, OnDestroy {
-
   /**
    * Whether there is a valid input from that "information card" components
    * can show useful information.
@@ -25,11 +24,10 @@ export class AppComponent implements OnInit, OnDestroy {
 
   private subscription: Subscription | null = null;
 
-  constructor(private service: ParsedInputService) {
-  }
+  constructor(private service: ParsedInputService) {}
 
   ngOnInit(): void {
-    this.subscription = this.service.getInput$().subscribe(val => {
+    this.subscription = this.service.getInput$().subscribe((val) => {
       this.hasData = !!val;
       this.isFraction = this.hasData && !!val?.unsignedFractionPart;
     });
@@ -40,7 +38,4 @@ export class AppComponent implements OnInit, OnDestroy {
       this.subscription.unsubscribe();
     }
   }
-
-
-
 }

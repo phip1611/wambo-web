@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'app-site-info',
-    templateUrl: './site-info.component.html',
-    standalone: false
+  selector: 'app-site-info',
+  templateUrl: './site-info.component.html',
+  standalone: false,
 })
 export class SiteInfoComponent implements OnInit {
-
   bootstrapClasses = 'd-block d-md-inline-block py-1 py-md-0';
 
   /**
@@ -19,19 +18,18 @@ export class SiteInfoComponent implements OnInit {
   // this should only load the javascript parts that are necessary.
   // => even smaller bundle
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     fetch('/3rdpartylicenses.txt')
-      .then(res => {
+      .then((res) => {
         if (!res.ok) {
           throw new Error(`Can't fetch '/3rdpartylicenses.txt'`);
         }
         return res;
       })
-      .then(res => res.text())
-      .then(content => this.openSourceLicenses = content)
+      .then((res) => res.text())
+      .then((content) => (this.openSourceLicenses = content))
       .catch(() => console.info(`Can't fetch '/3rdpartylicenses.txt'`));
   }
-
 }

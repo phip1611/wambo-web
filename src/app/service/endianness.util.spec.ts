@@ -1,8 +1,6 @@
 import { swapEndianness } from './endianness.util';
 
-
 describe('endianness util', () => {
-
   it('should swap endianness', () => {
     const arrayBuffer1 = new ArrayBuffer(1);
     const u8Array = new Uint8Array(arrayBuffer1);
@@ -30,8 +28,4 @@ describe('endianness util', () => {
     expect(u32_2Array[0]).toEqual(0x88776655);
     expect(u32_2Array[1]).toEqual(0x44332211);
   });
-
-
-
-
 });

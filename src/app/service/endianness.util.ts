@@ -27,12 +27,11 @@ export function getSystemEndianness(): Endianness {
   // then we have little Endian
   if (uint8Array[0] === 0xbb) {
     return Endianness.LittleEndian;
-  } else /*if (uint8Array[0] === 0xAA)*/ {
+  } /*if (uint8Array[0] === 0xAA)*/ else {
     return Endianness.BigEndian;
   } /*else {
     // here be dragons
   }*/
-
 }
 
 /**
@@ -47,9 +46,11 @@ export function swapEndianness(buf: ArrayBuffer): void {
     return;
   }
 
-  if (u8Arr.length === BitLength.B16 / 8
-    || u8Arr.length === BitLength.B32 / 8
-    || u8Arr.length === BitLength.B64 / 8) {
+  if (
+    u8Arr.length === BitLength.B16 / 8 ||
+    u8Arr.length === BitLength.B32 / 8 ||
+    u8Arr.length === BitLength.B64 / 8
+  ) {
     for (let i = 0; i < u8Arr.length / 2; i++) {
       const tmp = u8Arr[i];
       u8Arr[i] = u8Arr[u8Arr.length - 1 - i];

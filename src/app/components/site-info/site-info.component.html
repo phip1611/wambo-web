@@ -1,94 +1,194 @@
 <footer class="footer my-1 py-1">
-  <a href="#" class="footer__link {{bootstrapClasses}}" title="About this site"
-     data-bs-toggle="modal" data-bs-target="#siteInfoModal"
-  >About this site</a>
-  <a href="#" class="footer__link {{bootstrapClasses}}" title="Privacy / Datenschutzerklärung"
-     data-bs-toggle="modal" data-bs-target="#privacyInfoModal"
-  >Privacy / Datenschutzerklärung</a>
-  <a href="#" class="footer__link {{bootstrapClasses}}" title="Legal / Impressum"
-     data-bs-toggle="modal" data-bs-target="#legalInfoModal"
-  >Legal / Impressum</a>
+  <a
+    href="#"
+    class="footer__link {{ bootstrapClasses }}"
+    title="About this site"
+    data-bs-toggle="modal"
+    data-bs-target="#siteInfoModal"
+    >About this site</a
+  >
+  <a
+    href="#"
+    class="footer__link {{ bootstrapClasses }}"
+    title="Privacy / Datenschutzerklärung"
+    data-bs-toggle="modal"
+    data-bs-target="#privacyInfoModal"
+    >Privacy / Datenschutzerklärung</a
+  >
+  <a
+    href="#"
+    class="footer__link {{ bootstrapClasses }}"
+    title="Legal / Impressum"
+    data-bs-toggle="modal"
+    data-bs-target="#legalInfoModal"
+    >Legal / Impressum</a
+  >
 </footer>
 
 <!-- Modal Dialog About this site. -->
-<div class="modal fade" id="siteInfoModal" tabindex="-1" aria-labelledby="siteInfoModalLabel" aria-hidden="true">
+<div
+  class="modal fade"
+  id="siteInfoModal"
+  tabindex="-1"
+  aria-labelledby="siteInfoModalLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="siteInfoModalLabel">About this site</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-        </button>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
       <div class="modal-body">
         <p>
-          This is a non-commercial site without user tracking.
-          I don't make any money from this. I built it to help others and for fun.
-          You can support this project with code <a title="Link to Github repository of Wambo Web" class="link-primary" href="https://github.com/phip1611/wambo-web" target="_blank">
-          contributions on github</a> or by tweeting
-          it (you can mention me <a title="Link to my Twitter profile" class="link-primary" href="https://twitter.com/phip1611" target="_blank">&#64;phip1611</a> 😎).
+          This is a non-commercial site without user tracking. I don't make any
+          money from this. I built it to help others and for fun. You can
+          support this project with code
+          <a
+            title="Link to Github repository of Wambo Web"
+            class="link-primary"
+            href="https://github.com/phip1611/wambo-web"
+            target="_blank"
+          >
+            contributions on github</a
+          >
+          or by tweeting it (you can mention me
+          <a
+            title="Link to my Twitter profile"
+            class="link-primary"
+            href="https://twitter.com/phip1611"
+            target="_blank"
+            >&#64;phip1611</a
+          >
+          😎).
         </p>
         <p>
-          This site was built using <a class="link-primary" href="https://angular.io" target="_blank" title="angular">angular</a> and
-          <a class="link-primary" href="https://getbootstrap.com/" target="_blank" title="bootstrap">bootstrap</a>. It also heavily
-          relies on the great <a class="link-primary" href="https://github.com/MikeMcl/bignumber.js/" target="_blank" title="bignumber.js library">bignumber.js</a>
+          This site was built using
+          <a
+            class="link-primary"
+            href="https://angular.io"
+            target="_blank"
+            title="angular"
+            >angular</a
+          >
+          and
+          <a
+            class="link-primary"
+            href="https://getbootstrap.com/"
+            target="_blank"
+            title="bootstrap"
+            >bootstrap</a
+          >. It also heavily relies on the great
+          <a
+            class="link-primary"
+            href="https://github.com/MikeMcl/bignumber.js/"
+            target="_blank"
+            title="bignumber.js library"
+            >bignumber.js</a
+          >
           library.
         </p>
         <h5 class="mt-4">CLI Version of Wambo</h5>
-        <p>There is a CLI version of <strong>Wambo Web</strong> written in Rust: <a
-          title="Wambo as CLI on crates.io"
-          target="_blank"
-          class="link-primary"
-          href="https://crates.io/crates/wambo">
-          Wambo on crates.io</a>. You can install it with
+        <p>
+          There is a CLI version of <strong>Wambo Web</strong> written in Rust:
+          <a
+            title="Wambo as CLI on crates.io"
+            target="_blank"
+            class="link-primary"
+            href="https://crates.io/crates/wambo"
+          >
+            Wambo on crates.io</a
+          >. You can install it with
           <code class="text-nowrap">$ cargo install wambo</code>
         </p>
         <h5 class="mt-4">3rd Party/Open Source Licenses</h5>
         <p *ngIf="!openSourceLicenses">
-          <a href="/3rdpartylicenses.txt" title="3rd Party Licenses" target="_blank" class="link-primary">Click here to see 3rd Party/Open Source Licenses.</a>
+          <a
+            href="/3rdpartylicenses.txt"
+            title="3rd Party Licenses"
+            target="_blank"
+            class="link-primary"
+            >Click here to see 3rd Party/Open Source Licenses.</a
+          >
         </p>
-        <pre *ngIf="openSourceLicenses">{{openSourceLicenses}}</pre>
+        <pre *ngIf="openSourceLicenses">{{ openSourceLicenses }}</pre>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
       </div>
     </div>
   </div>
 </div>
 
 <!-- Modal Dialog Privacy -->
-<div class="modal fade" id="privacyInfoModal" tabindex="-1" aria-labelledby="privacyInfoModalLabel" aria-hidden="true">
+<div
+  class="modal fade"
+  id="privacyInfoModal"
+  tabindex="-1"
+  aria-labelledby="privacyInfoModalLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="privacyInfoModalLabel">Privacy Notice / Datenschutzerklärung</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-        </button>
+        <h5 class="modal-title" id="privacyInfoModalLabel">
+          Privacy Notice / Datenschutzerklärung
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
       <div class="modal-body">
-        This site uses no cookies and no user tracking or advertising at all.
-        It also doesn't include any external resources.
+        This site uses no cookies and no user tracking or advertising at all. It
+        also doesn't include any external resources.
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
       </div>
     </div>
   </div>
 </div>
 
 <!-- Modal Dialog Legal -->
-<div class="modal fade" id="legalInfoModal" tabindex="-1" aria-labelledby="legalInfoModalLabel" aria-hidden="true">
+<div
+  class="modal fade"
+  id="legalInfoModal"
+  tabindex="-1"
+  aria-labelledby="legalInfoModalLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="legalInfoModalLabel">Legal / Impressum</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-        </button>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
       <div class="modal-body">
-        <a href="https://phip1611.de/impressum/" title="Legal / Impressum">Responsible person according to § 5 TMG.</a>
+        <a href="https://phip1611.de/impressum/" title="Legal / Impressum"
+          >Responsible person according to § 5 TMG.</a
+        >
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
       </div>
     </div>
   </div>

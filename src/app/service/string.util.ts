@@ -15,7 +15,10 @@ export function back_substr(str: string, from: number, len: number): string {
  * @param str string
  * @param len length > 0
  */
-export function stringToExactLengthFromRightOrPadZerosLeft(str: string, len: number): string {
+export function stringToExactLengthFromRightOrPadZerosLeft(
+  str: string,
+  len: number,
+): string {
   if (str.length < len) {
     str = '0'.repeat(len - str.length) + str;
   } else if (str.length > len) {

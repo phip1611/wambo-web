@@ -1,44 +1,83 @@
 <!-- h-100: make sure each card is as high as the highest card in the row  -->
 <div class="card h-100" *ngIf="parsed">
   <div class="card-body">
-    <h5 class="card-title">Value in Different Signed Integer Sizes (Two's Complement)</h5>
-    <small class="text-muted">Interpreting the lowest x bits (takes whole part of user input w/o sign).</small>
+    <h5 class="card-title">
+      Value in Different Signed Integer Sizes (Two's Complement)
+    </h5>
+    <small class="text-muted"
+      >Interpreting the lowest x bits (takes whole part of user input w/o
+      sign).</small
+    >
     <div class="table-responsive">
       <table class="table table-striped mb-0 mt-1">
         <tbody>
-        <tr title="Integer bits of {{parsed.unsignedWholePart.toString()}} as i8">
-          <td>&nbsp;&nbsp;i8</td>
-          <td class="text-purple"><mono>{{output.i8}}</mono></td>
-        </tr>
-        <tr title="Integer bits of {{parsed.unsignedWholePart.toString()}} as i16">
-          <td>i16</td>
-          <td class="text-purple"><mono>{{output.i16}}</mono></td>
-        </tr>
-        <tr title="Integer bits of {{parsed.unsignedWholePart.toString()}} as i32">
-          <td>i32</td>
-          <td class="text-purple"><mono>{{output.i32}}</mono></td>
-        </tr>
-        <tr title="Integer bits of {{parsed.unsignedWholePart.toString()}} as i64">
-          <td>i64</td>
-          <td class="text-purple"><mono>{{output.i64}}</mono></td>
-        </tr>
-        <tr title="Unsigned integer bits (u64) of decimal {{parsed.unsignedWholePart.toString()}}">
-          <td class="text-muted">bits</td>
-          <td class="text-muted">
-            <mono class="bits-small">{{output.bits}}</mono>
-            <mono class="bits-small text-nowrap">64------56------48------40------32------24------16-------8-------0</mono>
-          </td>
-        </tr>
+          <tr
+            title="Integer bits of {{
+              parsed.unsignedWholePart.toString()
+            }} as i8"
+          >
+            <td>&nbsp;&nbsp;i8</td>
+            <td class="text-purple">
+              <mono>{{ output.i8 }}</mono>
+            </td>
+          </tr>
+          <tr
+            title="Integer bits of {{
+              parsed.unsignedWholePart.toString()
+            }} as i16"
+          >
+            <td>i16</td>
+            <td class="text-purple">
+              <mono>{{ output.i16 }}</mono>
+            </td>
+          </tr>
+          <tr
+            title="Integer bits of {{
+              parsed.unsignedWholePart.toString()
+            }} as i32"
+          >
+            <td>i32</td>
+            <td class="text-purple">
+              <mono>{{ output.i32 }}</mono>
+            </td>
+          </tr>
+          <tr
+            title="Integer bits of {{
+              parsed.unsignedWholePart.toString()
+            }} as i64"
+          >
+            <td>i64</td>
+            <td class="text-purple">
+              <mono>{{ output.i64 }}</mono>
+            </td>
+          </tr>
+          <tr
+            title="Unsigned integer bits (u64) of decimal {{
+              parsed.unsignedWholePart.toString()
+            }}"
+          >
+            <td class="text-muted">bits</td>
+            <td class="text-muted">
+              <mono class="bits-small">{{ output.bits }}</mono>
+              <mono class="bits-small text-nowrap"
+                >64------56------48------40------32------24------16-------8-------0</mono
+              >
+            </td>
+          </tr>
         </tbody>
       </table>
       <small class="d-block mt-2 text-muted">
-        For example: <code>0b10000000</code> (<code>0x80</code>) is <code>-128</code> when interpreted as <code>i8</code>,
-        because the <abbr title="Most significant bit">MSB</abbr> is <code>1</code>.<br/>
-        See <a class="link-primary"
-               href="https://en.wikipedia.org/wiki/Two%27s_complement"
-               title="Two's complement @ Wikipedia"
-               target="_blank"
-        >Two's complement &#64; Wikipedia</a>
+        For example: <code>0b10000000</code> (<code>0x80</code>) is
+        <code>-128</code> when interpreted as <code>i8</code>, because the
+        <abbr title="Most significant bit">MSB</abbr> is <code>1</code>.<br />
+        See
+        <a
+          class="link-primary"
+          href="https://en.wikipedia.org/wiki/Two%27s_complement"
+          title="Two's complement @ Wikipedia"
+          target="_blank"
+          >Two's complement &#64; Wikipedia</a
+        >
       </small>
     </div>
   </div>

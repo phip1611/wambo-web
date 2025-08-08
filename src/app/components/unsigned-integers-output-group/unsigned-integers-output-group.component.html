@@ -2,38 +2,72 @@
 <div class="card h-100" *ngIf="parsed">
   <div class="card-body">
     <h5 class="card-title">Value in Different Unsigned Integer Sizes</h5>
-    <small class="text-muted">Interpreting the lowest x bits (takes whole part of user input w/o sign).</small>
+    <small class="text-muted"
+      >Interpreting the lowest x bits (takes whole part of user input w/o
+      sign).</small
+    >
     <div class="table-responsive">
       <table class="table table-striped mb-0 mt-1">
         <tbody>
-        <tr title="Integer bits of {{parsed.unsignedWholePart.toString()}} as u8">
-          <td>&nbsp;&nbsp;u8</td>
-          <td class="text-yellow"><mono>{{output.u8}}</mono></td>
-        </tr>
-        <tr title="Integer bits of {{parsed.unsignedWholePart.toString()}} as u16">
-          <td>u16</td>
-          <td class="text-yellow"><mono>{{output.u16}}</mono></td>
-        </tr>
-        <tr title="Integer bits of {{parsed.unsignedWholePart.toString()}} as u32">
-          <td>u32</td>
-          <td class="text-yellow"><mono>{{output.u32}}</mono></td>
-        </tr>
-        <tr title="Integer bits of {{parsed.unsignedWholePart.toString()}} as u64">
-          <td>u64</td>
-          <td class="text-yellow"><mono>{{output.u64}}</mono></td>
-        </tr>
-        <tr title="Unsigned integer bits (u64) of decimal {{parsed.unsignedWholePart.toString()}}">
-          <td class="text-muted">bits</td>
-          <td class="text-muted">
-            <mono class="bits-small">{{output.bits}}</mono>
-            <mono class="bits-small text-nowrap">64------56------48------40------32------24------16-------8-------0</mono>
-          </td>
-        </tr>
+          <tr
+            title="Integer bits of {{
+              parsed.unsignedWholePart.toString()
+            }} as u8"
+          >
+            <td>&nbsp;&nbsp;u8</td>
+            <td class="text-yellow">
+              <mono>{{ output.u8 }}</mono>
+            </td>
+          </tr>
+          <tr
+            title="Integer bits of {{
+              parsed.unsignedWholePart.toString()
+            }} as u16"
+          >
+            <td>u16</td>
+            <td class="text-yellow">
+              <mono>{{ output.u16 }}</mono>
+            </td>
+          </tr>
+          <tr
+            title="Integer bits of {{
+              parsed.unsignedWholePart.toString()
+            }} as u32"
+          >
+            <td>u32</td>
+            <td class="text-yellow">
+              <mono>{{ output.u32 }}</mono>
+            </td>
+          </tr>
+          <tr
+            title="Integer bits of {{
+              parsed.unsignedWholePart.toString()
+            }} as u64"
+          >
+            <td>u64</td>
+            <td class="text-yellow">
+              <mono>{{ output.u64 }}</mono>
+            </td>
+          </tr>
+          <tr
+            title="Unsigned integer bits (u64) of decimal {{
+              parsed.unsignedWholePart.toString()
+            }}"
+          >
+            <td class="text-muted">bits</td>
+            <td class="text-muted">
+              <mono class="bits-small">{{ output.bits }}</mono>
+              <mono class="bits-small text-nowrap"
+                >64------56------48------40------32------24------16-------8-------0</mono
+              >
+            </td>
+          </tr>
         </tbody>
       </table>
       <small class="d-block mt-2 text-muted">
-        For example: <code>0b1000000000</code> (<code>0x100</code>) is <code>0</code> when interpreted as <code>u8</code>,
-        because the lowest 8 bits are all zero.
+        For example: <code>0b1000000000</code> (<code>0x100</code>) is
+        <code>0</code> when interpreted as <code>u8</code>, because the lowest 8
+        bits are all zero.
       </small>
     </div>
   </div>

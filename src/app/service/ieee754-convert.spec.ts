@@ -2,11 +2,10 @@ import BigNumber from 'bignumber.js';
 import {
   bigNumberAsDoubleToIntegerHexBits,
   bigNumberAsFloatToIntegerHexBits,
-  bigNumberWholePartBitsToF32Value
+  bigNumberWholePartBitsToF32Value,
 } from './ieee754-convert.util';
 
 describe('ieee754-convert', () => {
-
   it('should convert to f32 value', () => {
     const bitStr = '0x40a00000';
     const num = new BigNumber(bitStr);
@@ -18,7 +17,6 @@ describe('ieee754-convert', () => {
     const num1 = new BigNumber(5);
     const bitStr1 = bigNumberAsFloatToIntegerHexBits(num1);
     expect(bitStr1).toEqual('0x40a00000');
-
 
     const num2 = new BigNumber(-3.141);
     const bitStr2 = bigNumberAsFloatToIntegerHexBits(num2);
@@ -48,6 +46,4 @@ describe('ieee754-convert', () => {
     // from 0x7ff8000000000000 to 0x7FFFFFFFFFFFFFFF
     expect(bitStr3).toEqual('0x7ff8000000000000');
   });
-
-
 });

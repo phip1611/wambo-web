@@ -35,7 +35,9 @@ input.ng-dirty.ng-invalid {
     border: 1px solid transparent;
     border-radius: 5px;
 
-    &:hover, &:active, &:focus {
+    &:hover,
+    &:active,
+    &:focus {
       color: #fff;
       text-decoration: none;
       border: 1px solid #fff;
@@ -71,5 +73,3 @@ input.ng-dirty.ng-invalid {
 .link-primary {
   text-decoration: none;
 }
-
-

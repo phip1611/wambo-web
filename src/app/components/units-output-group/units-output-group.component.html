@@ -6,22 +6,30 @@
     <div class="table-responsive">
       <table class="table table-striped mb-0 mt-1">
         <tbody>
-        <tr title="{{parsed.signedNumericValue.toString()}} in Kilobytes">
-          <td>Kilo</td>
-          <td class="text-primary"><mono>{{output.kilo}}</mono></td>
-        </tr>
-        <tr title="{{parsed.signedNumericValue.toString()}} in Megabytes">
-          <td>Mega</td>
-          <td class="text-primary"><mono>{{output.mega}}</mono></td>
-        </tr>
-        <tr title="{{parsed.signedNumericValue.toString()}} in Gigabytes">
-          <td>Giga</td>
-          <td class="text-primary"><mono>{{output.giga}}</mono></td>
-        </tr>
-        <tr title="{{parsed.signedNumericValue.toString()}} in Terabytes">
-          <td>Tera</td>
-          <td class="text-primary"><mono>{{output.tera}}</mono></td>
-        </tr>
+          <tr title="{{ parsed.signedNumericValue.toString() }} in Kilobytes">
+            <td>Kilo</td>
+            <td class="text-primary">
+              <mono>{{ output.kilo }}</mono>
+            </td>
+          </tr>
+          <tr title="{{ parsed.signedNumericValue.toString() }} in Megabytes">
+            <td>Mega</td>
+            <td class="text-primary">
+              <mono>{{ output.mega }}</mono>
+            </td>
+          </tr>
+          <tr title="{{ parsed.signedNumericValue.toString() }} in Gigabytes">
+            <td>Giga</td>
+            <td class="text-primary">
+              <mono>{{ output.giga }}</mono>
+            </td>
+          </tr>
+          <tr title="{{ parsed.signedNumericValue.toString() }} in Terabytes">
+            <td>Tera</td>
+            <td class="text-primary">
+              <mono>{{ output.tera }}</mono>
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>

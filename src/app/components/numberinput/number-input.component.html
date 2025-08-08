@@ -1,37 +1,57 @@
 <!-- h-100: make sure each card is as high as the highest card in the row  -->
 <div class="card h-100">
   <div class="card-body">
-    <h1 class="app-title card-title">Welcome to <strong class="app-title__highlighted">Wambo Web</strong>.</h1>
+    <h1 class="app-title card-title">
+      Welcome to <strong class="app-title__highlighted">Wambo Web</strong>.
+    </h1>
     <form *ngIf="form" [formGroup]="form">
       <div class="form-group">
-        <label for="numberInput" class="form-label">Input number in numeral system and unit of your choice</label>
+        <label for="numberInput" class="form-label"
+          >Input number in numeral system and unit of your choice</label
+        >
         <!-- I took a few attributes like haspop=false from google search
              in order to prevent any kind of browser generated popup. I didn't
              know them before. -->
-        <input #numberInputElement
-               type="text"
-               name="numberInput"
-               formControlName="numberInput"
-               autocomplete="off"
-               autocorrect="off"
-               spellcheck="false"
-               haspopup="false"
-               autofocus
-               placeholder="0b100000000_11110000, 0x2, 1024ti"
-               title="Number in numeral system and unit of your choice"
-               class="form-control" id="numberInput" aria-describedby="numberInputHelp">
+        <input
+          #numberInputElement
+          type="text"
+          name="numberInput"
+          formControlName="numberInput"
+          autocomplete="off"
+          autocorrect="off"
+          spellcheck="false"
+          haspopup="false"
+          autofocus
+          placeholder="0b100000000_11110000, 0x2, 1024ti"
+          title="Number in numeral system and unit of your choice"
+          class="form-control"
+          id="numberInput"
+          aria-describedby="numberInputHelp"
+        />
 
-        <div *ngIf="form.get('numberInput')?.hasError('invalid')"
-             class="alert alert-danger form-text my-2" role="alert">
-            🚨️ Your input is invalid.
+        <div
+          *ngIf="form.get('numberInput')?.hasError('invalid')"
+          class="alert alert-danger form-text my-2"
+          role="alert"
+        >
+          🚨️ Your input is invalid.
         </div>
-        <div *ngIf="form.get('numberInput')?.hasError('i18n')"
-             class="alert alert-warning form-text my-2" role="alert">
-          ⚠️ Please use english number format. "." (point/dot) as delimiter of whole and fraction part, e.g. "<code>3.141</code>".
+        <div
+          *ngIf="form.get('numberInput')?.hasError('i18n')"
+          class="alert alert-warning form-text my-2"
+          role="alert"
+        >
+          ⚠️ Please use english number format. "." (point/dot) as delimiter of
+          whole and fraction part, e.g. "<code>3.141</code>".
         </div>
-        <div *ngIf="form.get('numberInput')?.hasError('big_number_sep')"
-             class="alert alert-warning form-text my-2" role="alert">
-          ⚠️ Please use <code>_</code> (underscore) to increase readability of big numbers. For example <code>0b10000000_10000000</code> or <code>1_000_000</code>.
+        <div
+          *ngIf="form.get('numberInput')?.hasError('big_number_sep')"
+          class="alert alert-warning form-text my-2"
+          role="alert"
+        >
+          ⚠️ Please use <code>_</code> (underscore) to increase readability of
+          big numbers. For example <code>0b10000000_10000000</code> or
+          <code>1_000_000</code>.
         </div>
       </div>
     </form>
@@ -40,39 +60,51 @@
     <div class="accordion mt-2" id="numberInputHelp">
       <div class="accordion-item">
         <h2 class="accordion-header" id="numberInputHelpHeading1">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                  data-bs-target="#numberInputHelpItem1" aria-expanded="false" aria-controls="numberInputHelpItem1"
-                  title="show input help"
+          <button
+            class="accordion-button collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#numberInputHelpItem1"
+            aria-expanded="false"
+            aria-controls="numberInputHelpItem1"
+            title="show input help"
           >
             show input help
           </button>
         </h2>
-        <div id="numberInputHelpItem1" class="accordion-collapse collapse" aria-labelledby="numberInputHelpHeading1" data-bs-parent="#numberInputHelp">
+        <div
+          id="numberInputHelpItem1"
+          class="accordion-collapse collapse"
+          aria-labelledby="numberInputHelpHeading1"
+          data-bs-parent="#numberInputHelp"
+        >
           <div class="accordion-body pb-0">
             <small class="text-muted">
-              <code>0b</code> for binary,
-              <code>0o</code> for octal,
+              <code>0b</code> for binary, <code>0o</code> for octal,
               <code>0x</code> for hex
-              <br/>
-              <code>k/kb</code> for kilobyte, or:
-              <code>m/mb</code>,
+              <br />
+              <code>k/kb</code> for kilobyte, or: <code>m/mb</code>,
               <code>g/gb</code>,
               <code>t/tb</code>
-              <br/>
-              <code>ki/kib</code> for kibibyte, or:
-              <code>mi/mib</code>,
+              <br />
+              <code>ki/kib</code> for kibibyte, or: <code>mi/mib</code>,
               <code>gi/gib</code>,
               <code>ti/tib</code>
-              <br/>
-              Fraction numbers in english format (<code>3.141</code>) only, please.
-              <br/>For long numbers you can use <code>1_000_000.141</code> (underscores).
-              <br/>
-              <br/>
+              <br />
+              Fraction numbers in english format (<code>3.141</code>) only,
+              please.
+              <br />For long numbers you can use
+              <code>1_000_000.141</code> (underscores).
+              <br />
+              <br />
               <strong>Valid values are for example:</strong>
               <ul>
                 <li><code>0b10000000_11110000</code></li>
                 <li><code>1mb</code></li>
-                <li><code>-0x1024.242kib</code> (negative kibibyte as hexadecimal fraction)</li>
+                <li>
+                  <code>-0x1024.242kib</code> (negative kibibyte as hexadecimal
+                  fraction)
+                </li>
               </ul>
             </small>
           </div>
@@ -84,29 +116,48 @@
     <div class="d-none d-lg-block mt-2">
       <!-- me-2: is the new margin-left in bt@v5.0:
            https://getbootstrap.com/docs/5.0/utilities/spacing/#margin-and-padding -->
-      <button *ngIf="form?.valid" type="button" class="btn btn-secondary me-2"
-              title="Transform input to f32 (float) bits"
-              (click)="onTransformToF32()"
-      >Transform to f32 (float)</button>
-      <button  *ngIf="form?.valid" type="button" class="btn btn-secondary"
-               title="Transform input to f64 (double) bits"
-               (click)="onTransformToF64()"
-      >Transform to f64 (double)</button>
+      <button
+        *ngIf="form?.valid"
+        type="button"
+        class="btn btn-secondary me-2"
+        title="Transform input to f32 (float) bits"
+        (click)="onTransformToF32()"
+      >
+        Transform to f32 (float)
+      </button>
+      <button
+        *ngIf="form?.valid"
+        type="button"
+        class="btn btn-secondary"
+        title="Transform input to f64 (double) bits"
+        (click)="onTransformToF64()"
+      >
+        Transform to f64 (double)
+      </button>
     </div>
 
     <!-- small view -->
     <div class="d-block d-lg-none mt-2">
       <!-- me-2: is the new margin-left in bt@v5.0:
            https://getbootstrap.com/docs/5.0/utilities/spacing/#margin-and-padding -->
-      <button *ngIf="form?.valid" type="button" class="btn btn-secondary mb-2 w-100"
-              title="Transform input to f32 (float) bits"
-              (click)="onTransformToF32()"
-      >Transform to f32 (float)</button>
-      <button  *ngIf="form?.valid" type="button" class="btn btn-secondary w-100"
-               title="Transform input to f64 (double) bits"
-               (click)="onTransformToF64()"
-      >Transform to f64 (double)</button>
+      <button
+        *ngIf="form?.valid"
+        type="button"
+        class="btn btn-secondary mb-2 w-100"
+        title="Transform input to f32 (float) bits"
+        (click)="onTransformToF32()"
+      >
+        Transform to f32 (float)
+      </button>
+      <button
+        *ngIf="form?.valid"
+        type="button"
+        class="btn btn-secondary w-100"
+        title="Transform input to f64 (double) bits"
+        (click)="onTransformToF64()"
+      >
+        Transform to f64 (double)
+      </button>
     </div>
-
   </div>
 </div>
