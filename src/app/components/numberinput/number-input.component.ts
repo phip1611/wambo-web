@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { AbstractControl, UntypedFormBuilder, UntypedFormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import * as XRegExp from 'xregexp';
+import XRegExp from "xregexp";
 import { bigNumberAsDoubleToIntegerHexBits, bigNumberAsFloatToIntegerHexBits } from '../../service/ieee754-convert.util';
 import { ParsedInputService } from '../../service/parsed-input.service';
 import { NUMBER_INPUT_REGEX, parseNumberInput } from '../../service/parsing/parse';

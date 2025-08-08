@@ -1,5 +1,5 @@
 import BigNumber from 'bignumber.js';
-import * as XRegExp from 'xregexp';
+import XRegExp from "xregexp";
 
 export enum NumeralSystem {
   Binary,
