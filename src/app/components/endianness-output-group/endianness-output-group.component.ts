@@ -6,8 +6,9 @@ import { ParseResult } from '../../service/parsing/parse-result';
 import { back_substr } from '../../service/string.util';
 
 @Component({
-  selector: 'app-endianness-output-group',
-  templateUrl: './endianness-output-group.component.html'
+    selector: 'app-endianness-output-group',
+    templateUrl: './endianness-output-group.component.html',
+    standalone: false
 })
 export class EndiannessOutputGroupComponent implements OnInit {
 

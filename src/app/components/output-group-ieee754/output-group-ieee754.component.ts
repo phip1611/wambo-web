@@ -5,8 +5,9 @@ import { ParsedInputService } from '../../service/parsed-input.service';
 import { ParseResult } from '../../service/parsing/parse-result';
 
 @Component({
-  selector: 'app-output-group-ieee754',
-  templateUrl: './output-group-ieee754.component.html'
+    selector: 'app-output-group-ieee754',
+    templateUrl: './output-group-ieee754.component.html',
+    standalone: false
 })
 export class OutputGroupIeee754Component implements OnInit {
 

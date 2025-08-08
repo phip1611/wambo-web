@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-site-info',
-  templateUrl: './site-info.component.html'
+    selector: 'app-site-info',
+    templateUrl: './site-info.component.html',
+    standalone: false
 })
 export class SiteInfoComponent implements OnInit {
 

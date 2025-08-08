@@ -8,8 +8,9 @@ import { NUMBER_INPUT_REGEX, parseNumberInput } from '../../service/parsing/pars
 import { ParseResult } from '../../service/parsing/parse-result';
 
 @Component({
-  selector: 'app-number-input',
-  templateUrl: './number-input.component.html'
+    selector: 'app-number-input',
+    templateUrl: './number-input.component.html',
+    standalone: false
 })
 export class NumberInputComponent implements OnInit, AfterViewInit, OnDestroy {
 

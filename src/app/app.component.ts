@@ -6,8 +6,9 @@ import { ParsedInputService } from './service/parsed-input.service';
  * The app component is responsible for disabling "information card" components in some conditions.
  */
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html'
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    standalone: false
 })
 export class AppComponent implements OnInit, OnDestroy {
 
