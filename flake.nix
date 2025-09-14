@@ -5,44 +5,33 @@
   description = "Wambo Web (Web App)";
 
   inputs = {
-    gitignore.url = "github:hercules-ci/gitignore.nix";
-    gitignore.inputs.nixpkgs.follows = "nixpkgs";
-
-    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-
-    flake-parts.url = "github:hercules-ci/flake-parts";
-    flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, nixpkgs, gitignore, flake-parts }:
-    flake-parts.lib.mkFlake { inherit inputs; }
-      {
-        flake = { };
+  outputs =
+    inputs@{ self, nixpkgs }:
+    let
+      systems = inputs.nixpkgs.lib.systems.flakeExposed;
 
-        # This can be build on all systems.
-        systems = nixpkgs.lib.systems.flakeExposed;
+      # Generates the typical per-system flake attributes.
+      forAllSystems =
+        function:
+        inputs.nixpkgs.lib.genAttrs systems (system: function inputs.nixpkgs.legacyPackages.${system});
 
-        perSystem = { config, pkgs, ... }:
-          let
-            project = import ./default.nix {
-              inherit pkgs;
-              gitignoreSource = gitignore.lib.gitignoreSource;
-            };
-          in
-          {
-            devShells = {
-              default = pkgs.mkShell {
-                inputsFrom = [ project ];
-              };
-            };
-
-            formatter = pkgs.nixpkgs-fmt;
-
-            # $ nix build .\#<attribute-name>
-            packages = {
-              default = project;
-            };
+      project = pkgs: pkgs.callPackage ./nix/release.nix { };
+    in
+    {
+      devShells = forAllSystems (pkgs: {
+        default = pkgs.mkShell {
+          default = pkgs.mkShell {
+            inputsFrom = [ (project pkgs) ];
           };
-      };
+        };
+      });
+      formatter = forAllSystems (pkgs: pkgs.nixfmt-tree);
+      # $ nix build .\#<attribute-name>
+      packages = forAllSystems (pkgs: {
+        default = (project pkgs);
+      });
+    };
 }
