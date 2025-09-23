@@ -1,27 +1,34 @@
-{ pkgs, gitignoreSource }:
+{
+  buildNpmPackage,
+  nodejs_22,
+  fd,
+  ouch,
+  brotli,
+  nix-gitignore,
+}:
 
-pkgs.buildNpmPackage {
+buildNpmPackage {
   pname = "wambo-web";
   version = "0.0.0";
 
-  src = gitignoreSource ../.;
+  src = nix-gitignore.gitignoreSource [ ] ../.;
 
-  nodejs = pkgs.nodejs_22;
+  nodejs = nodejs_22;
 
-  nativeBuildInputs = with pkgs; [
+  nativeBuildInputs = [
+    brotli
     fd # better find
     ouch
-    brotli
   ];
 
   /*
-  # Needed for the unit tests.
-  CHROME_BIN = "${pkgs.ungoogled-chromium}/bin/chromium";
+    # Needed for the unit tests.
+    CHROME_BIN = "${pkgs.ungoogled-chromium}/bin/chromium";
 
-  doCheck = true;
-  checkPhase = ''
-    npm test
-  '';
+    doCheck = true;
+    checkPhase = ''
+      npm test
+    '';
   */
 
   npmDepsHash = "sha256-0Sq93D+vKZmTBsCoWUK2ZKfxRuP3GJrp1GkFtB9xp0A=";
