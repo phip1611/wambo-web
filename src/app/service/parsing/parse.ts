@@ -1,4 +1,4 @@
-import * as XRegExp from 'xregexp';
+import XRegExp from 'xregexp';
 import { splitBigNumberToWholeAndMaybeFractionPart } from '../bignumber.util';
 import { NumeralSystem, parseNumberStringAsNumeralSystem, parseNumeralSystemFromString } from './ns';
 import { ParseResult } from './parse-result';
