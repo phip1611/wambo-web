@@ -1,6 +1,6 @@
 import { Component, DestroyRef, OnInit, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { AbstractControl, NonNullableFormBuilder, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { AbstractControl, NonNullableFormBuilder, ValidationErrors, ValidatorFn, Validators, ReactiveFormsModule } from '@angular/forms';
 import * as XRegExp from 'xregexp';
 import { bigNumberAsDoubleToIntegerHexBits, bigNumberAsFloatToIntegerHexBits } from '../../service/ieee754-convert.util';
 import { ParsedInputService } from '../../service/parsed-input.service';
@@ -10,7 +10,7 @@ import { ParseResult } from '../../service/parsing/parse-result';
 @Component({
     selector: 'app-number-input',
     templateUrl: './number-input.component.html',
-    standalone: false
+    imports: [ReactiveFormsModule]
 })
 export class NumberInputComponent implements OnInit {
   private readonly destroyRef = inject(DestroyRef);

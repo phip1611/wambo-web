@@ -3,11 +3,12 @@ import { bignumberWholePartToUnsignedBitStringOfLength, BitLength } from '../../
 import { toSInt16, toSInt32, toSInt64, toSInt8 } from '../../service/int-convert.util';
 import { ParsedInputService } from '../../service/parsed-input.service';
 import { ParseResult } from '../../service/parsing/parse-result';
+import { MonoComponent } from '../mono/mono.component';
 
 @Component({
     selector: 'app-signed-integers-output-group',
     templateUrl: './signed-integers-output-group.component.html',
-    standalone: false
+    imports: [MonoComponent]
 })
 export class SignedIntegersOutputGroupComponent {
 

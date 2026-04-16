@@ -1,11 +1,12 @@
 import { Component, effect, inject } from '@angular/core';
 import { ParsedInputService } from '../../service/parsed-input.service';
 import { ParseResult } from '../../service/parsing/parse-result';
+import { MonoComponent } from '../mono/mono.component';
 
 @Component({
     selector: 'app-numeral-systems-output-group',
     templateUrl: './numeral-systems-output-group.component.html',
-    standalone: false
+    imports: [MonoComponent]
 })
 export class NumeralSystemsOutputGroupComponent {
 

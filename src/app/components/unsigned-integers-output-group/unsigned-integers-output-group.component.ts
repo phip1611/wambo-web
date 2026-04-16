@@ -3,11 +3,12 @@ import { bignumberWholePartToUnsignedBitStringOfLength, BitLength } from '../../
 import { toUInt16, toUInt32, toUInt64, toUInt8 } from '../../service/int-convert.util';
 import { ParsedInputService } from '../../service/parsed-input.service';
 import { ParseResult } from '../../service/parsing/parse-result';
+import { MonoComponent } from '../mono/mono.component';
 
 @Component({
     selector: 'app-unsigned-integers-output-group',
     templateUrl: './unsigned-integers-output-group.component.html',
-    standalone: false
+    imports: [MonoComponent]
 })
 export class UnsignedIntegersOutputGroupComponent {
 

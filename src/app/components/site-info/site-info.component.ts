@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
     selector: 'app-site-info',
-    templateUrl: './site-info.component.html',
-    standalone: false
+    templateUrl: './site-info.component.html'
 })
 export class SiteInfoComponent implements OnInit {
 

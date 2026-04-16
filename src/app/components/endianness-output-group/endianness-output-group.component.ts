@@ -4,11 +4,12 @@ import { Endianness, getSystemEndianness } from '../../service/endianness.util';
 import { ParsedInputService } from '../../service/parsed-input.service';
 import { ParseResult } from '../../service/parsing/parse-result';
 import { back_substr } from '../../service/string.util';
+import { MonoComponent } from '../mono/mono.component';
 
 @Component({
     selector: 'app-endianness-output-group',
     templateUrl: './endianness-output-group.component.html',
-    standalone: false
+    imports: [MonoComponent]
 })
 export class EndiannessOutputGroupComponent {
 

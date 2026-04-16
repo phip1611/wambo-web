@@ -2,11 +2,12 @@ import { Component, effect, inject } from '@angular/core';
 import { ParsedInputService } from '../../service/parsed-input.service';
 import { ParseResult } from '../../service/parsing/parse-result';
 import { fromBaseToUnit, Unit } from '../../service/parsing/unit';
+import { MonoComponent } from '../mono/mono.component';
 
 @Component({
     selector: 'app-base1024-units-output-group',
     templateUrl: './base1024-units-output-group.component.html',
-    standalone: false
+    imports: [MonoComponent]
 })
 export class Base1024UnitsOutputGroupComponent {
 
