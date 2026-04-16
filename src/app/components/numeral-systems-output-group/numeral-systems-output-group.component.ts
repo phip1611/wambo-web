@@ -3,8 +3,9 @@ import { ParsedInputService } from '../../service/parsed-input.service';
 import { ParseResult } from '../../service/parsing/parse-result';
 
 @Component({
-  selector: 'app-numeral-systems-output-group',
-  templateUrl: './numeral-systems-output-group.component.html'
+    selector: 'app-numeral-systems-output-group',
+    templateUrl: './numeral-systems-output-group.component.html',
+    standalone: false
 })
 export class NumeralSystemsOutputGroupComponent implements OnInit {
 

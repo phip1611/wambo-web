@@ -5,8 +5,9 @@ import { ParsedInputService } from '../../service/parsed-input.service';
 import { ParseResult } from '../../service/parsing/parse-result';
 
 @Component({
-  selector: 'app-signed-integers-output-group',
-  templateUrl: './signed-integers-output-group.component.html'
+    selector: 'app-signed-integers-output-group',
+    templateUrl: './signed-integers-output-group.component.html',
+    standalone: false
 })
 export class SignedIntegersOutputGroupComponent implements OnInit {
 

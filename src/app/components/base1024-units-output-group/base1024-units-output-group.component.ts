@@ -4,8 +4,9 @@ import { ParseResult } from '../../service/parsing/parse-result';
 import { fromBaseToUnit, Unit } from '../../service/parsing/unit';
 
 @Component({
-  selector: 'app-base1024-units-output-group',
-  templateUrl: './base1024-units-output-group.component.html'
+    selector: 'app-base1024-units-output-group',
+    templateUrl: './base1024-units-output-group.component.html',
+    standalone: false
 })
 export class Base1024UnitsOutputGroupComponent implements OnInit {
 

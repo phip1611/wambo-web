@@ -5,8 +5,9 @@ import { ParsedInputService } from '../../service/parsed-input.service';
 import { ParseResult } from '../../service/parsing/parse-result';
 
 @Component({
-  selector: 'app-unsigned-integers-output-group',
-  templateUrl: './unsigned-integers-output-group.component.html'
+    selector: 'app-unsigned-integers-output-group',
+    templateUrl: './unsigned-integers-output-group.component.html',
+    standalone: false
 })
 export class UnsignedIntegersOutputGroupComponent implements OnInit {
 
