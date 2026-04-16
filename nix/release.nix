@@ -1,6 +1,6 @@
 {
   buildNpmPackage,
-  nodejs_22,
+  nodejs_24,
   fd,
   ouch,
   brotli,
@@ -13,7 +13,7 @@ buildNpmPackage {
 
   src = nix-gitignore.gitignoreSource [ ] ../.;
 
-  nodejs = nodejs_22;
+  nodejs = nodejs_24;
 
   nativeBuildInputs = [
     brotli
@@ -31,7 +31,7 @@ buildNpmPackage {
     '';
   */
 
-  npmDepsHash = "sha256-0Sq93D+vKZmTBsCoWUK2ZKfxRuP3GJrp1GkFtB9xp0A=";
+  npmDepsHash = "sha256-3XoUphLUjsYh/G+DqM//g85/3hYnhM7S2BBwas6qTFY=";
 
   npmBuildScript = "build_prod";
 
