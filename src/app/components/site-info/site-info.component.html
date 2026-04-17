@@ -43,13 +43,13 @@
     <code class="text-nowrap">$ cargo install wambo</code>
   </p>
   <h5 class="mt-4">3rd Party/Open Source Licenses</h5>
-  @if (!openSourceLicenses) {
+  @if (!openSourceLicenses()) {
     <p>
       <a href="/3rdpartylicenses.txt" title="3rd Party Licenses" target="_blank" class="link-primary">Click here to see 3rd Party/Open Source Licenses.</a>
     </p>
   }
-  @if (openSourceLicenses) {
-    <pre>{{openSourceLicenses}}</pre>
+  @if (openSourceLicenses()) {
+    <pre>{{openSourceLicenses()}}</pre>
   }
 </div>
 <div class="modal-footer">

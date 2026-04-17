@@ -1,7 +1,4 @@
-import { enableProdMode, provideZoneChangeDetection, importProvidersFrom } from '@angular/core';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-
-
+import { enableProdMode, importProvidersFrom, provideZonelessChangeDetection } from '@angular/core';
 import { environment } from './environments/environment';
 import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
@@ -14,13 +11,16 @@ if (environment.production) {
 }
 
 bootstrapApplication(AppComponent, {
-    providers: [importProvidersFrom(BrowserModule, CommonModule, 
+    providers: [
+        provideZonelessChangeDetection(),
+        importProvidersFrom(BrowserModule, CommonModule, 
         // FormsModule,
         ReactiveFormsModule, ServiceWorkerModule.register('ngsw-worker.js', {
             enabled: environment.production,
             // Register the ServiceWorker as soon as the app is stable
             // or after 30 seconds (whichever comes first).
             registrationStrategy: 'registerWhenStable:30000'
-        }))]
+        }))
+    ]
 })
   .catch(err => console.error(err));

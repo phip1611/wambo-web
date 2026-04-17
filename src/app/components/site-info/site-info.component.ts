@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 
 @Component({
     selector: 'app-site-info',
@@ -11,7 +11,7 @@ export class SiteInfoComponent implements OnInit {
   /**
    * Information fetched from /3rdpartylicenses.txt.
    */
-  openSourceLicenses: string | null = null;
+  readonly openSourceLicenses = signal<string | null>(null);
 
   // TODO refactor to use
   // https://medium.com/@aniruddhadas9/bootstrap-5-in-angular-10-without-jquery-45723598440c
@@ -29,7 +29,7 @@ export class SiteInfoComponent implements OnInit {
         return res;
       })
       .then(res => res.text())
-      .then(content => this.openSourceLicenses = content)
+      .then(content => this.openSourceLicenses.set(content))
       .catch(() => console.info(`Can't fetch '/3rdpartylicenses.txt'`));
   }
 
