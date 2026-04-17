@@ -1,3 +1,5 @@
+import 'bootstrap/js/src/collapse';
+import 'bootstrap/js/src/modal';
 import { provideZonelessChangeDetection } from '@angular/core';
 import { environment } from './environments/environment';
 import { bootstrapApplication } from '@angular/platform-browser';
