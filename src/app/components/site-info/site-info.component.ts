@@ -1,36 +1,27 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 @Component({
     selector: 'app-site-info',
     templateUrl: './site-info.component.html'
 })
-export class SiteInfoComponent implements OnInit {
+export class SiteInfoComponent {
 
-  bootstrapClasses = 'd-block d-md-inline-block py-1 py-md-0';
+  readonly bootstrapClasses = 'd-block d-md-inline-block py-1 py-md-0';
 
   /**
    * Information fetched from /3rdpartylicenses.txt.
    */
   readonly openSourceLicenses = signal<string | null>(null);
 
-  // TODO refactor to use
-  // https://medium.com/@aniruddhadas9/bootstrap-5-in-angular-10-without-jquery-45723598440c
-  // this should only load the javascript parts that are necessary.
-  // => even smaller bundle
-
-  constructor() { }
-
-  ngOnInit(): void {
-    fetch('/3rdpartylicenses.txt')
-      .then(res => {
-        if (!res.ok) {
-          throw new Error(`Can't fetch '/3rdpartylicenses.txt'`);
-        }
-        return res;
-      })
-      .then(res => res.text())
-      .then(content => this.openSourceLicenses.set(content))
-      .catch(() => console.info(`Can't fetch '/3rdpartylicenses.txt'`));
+  constructor() {
+    void this.loadOpenSourceLicenses();
   }
 
+  private async loadOpenSourceLicenses(): Promise<void> {
+    const res = await fetch('/3rdpartylicenses.txt').catch(() => null);
+    if (!res?.ok) {
+      return;
+    }
+    this.openSourceLicenses.set(await res.text());
+  }
 }
