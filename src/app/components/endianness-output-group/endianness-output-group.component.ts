@@ -1,8 +1,7 @@
-import { Component, effect, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { bignumberWholePartToUnsignedBitStringOfLength, BitLength } from '../../service/bit.util';
 import { Endianness, getSystemEndianness } from '../../service/endianness.util';
 import { ParsedInputService } from '../../service/parsed-input.service';
-import { ParseResult } from '../../service/parsing/parse-result';
 import { back_substr } from '../../service/string.util';
 import { MonoComponent } from '../mono/mono.component';
 
@@ -12,32 +11,21 @@ import { MonoComponent } from '../mono/mono.component';
     imports: [MonoComponent]
 })
 export class EndiannessOutputGroupComponent {
-
-  parsed: ParseResult | null = null;
-  output = {
-    systemEndianness: '',
-    u32Bits: '',
-    byteLE0: '',
-    byteLE1: '',
-    byteLE2: '',
-    byteLE3: '',
-  };
-
   private readonly service = inject(ParsedInputService);
-
-  private readonly syncOutput = effect(() => {
-      const pr = this.service.input();
-      if (!!pr) {
-        this.parsed = pr;
-        // Endianness[] -> numeric value to string
-        this.output.systemEndianness = Endianness[getSystemEndianness()];
-        this.output.u32Bits = bignumberWholePartToUnsignedBitStringOfLength(this.parsed.unsignedWholePart, BitLength.B32);
-        this.output.byteLE0 = '0b' + back_substr(this.output.u32Bits, this.output.u32Bits.length, 8);
-        this.output.byteLE1 = '0b' + back_substr(this.output.u32Bits, this.output.u32Bits.length - 8, 8);
-        this.output.byteLE2 = '0b' + back_substr(this.output.u32Bits, this.output.u32Bits.length - 16, 8);
-        this.output.byteLE3 = '0b' + back_substr(this.output.u32Bits, this.output.u32Bits.length - 24, 8);
-      } else {
-        this.parsed = null;
+  readonly parsed = this.service.input;
+  readonly output = computed(() => {
+      const parsed = this.parsed();
+      if (!parsed) {
+        return null;
       }
+      const u32Bits = bignumberWholePartToUnsignedBitStringOfLength(parsed.unsignedWholePart, BitLength.B32);
+      return {
+        systemEndianness: Endianness[getSystemEndianness()],
+        u32Bits,
+        byteLE0: '0b' + back_substr(u32Bits, u32Bits.length, 8),
+        byteLE1: '0b' + back_substr(u32Bits, u32Bits.length - 8, 8),
+        byteLE2: '0b' + back_substr(u32Bits, u32Bits.length - 16, 8),
+        byteLE3: '0b' + back_substr(u32Bits, u32Bits.length - 24, 8),
+      };
   });
 }

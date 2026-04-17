@@ -1,5 +1,6 @@
 <!-- h-100: make sure each card is as high as the highest card in the row  -->
-@if (parsed) {
+@if (parsed(); as parsed) {
+  @if (output(); as output) {
   <div class="card h-100">
     <div class="card-body">
       <h5 class="card-title">Endianness</h5>
@@ -51,4 +52,5 @@
       </div>
     </div>
   </div>
+  }
 }

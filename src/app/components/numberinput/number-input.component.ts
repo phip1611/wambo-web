@@ -1,4 +1,4 @@
-import { Component, DestroyRef, OnInit, inject } from '@angular/core';
+import { Component, DestroyRef, OnInit, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { AbstractControl, NonNullableFormBuilder, ValidationErrors, ValidatorFn, Validators, ReactiveFormsModule } from '@angular/forms';
 import { bigNumberAsDoubleToIntegerHexBits, bigNumberAsFloatToIntegerHexBits } from '../../service/ieee754-convert.util';
@@ -16,7 +16,7 @@ export class NumberInputComponent implements OnInit {
   private readonly fb = inject(NonNullableFormBuilder);
   private readonly parsedInputService = inject(ParsedInputService);
 
-  private latestValidParsedInput: ParseResult | null = null;
+  private readonly latestValidParsedInput = signal<ParseResult | null>(null);
   readonly form = this.fb.group({
     numberInput: this.fb.control('', {
       validators: [
@@ -133,7 +133,7 @@ export class NumberInputComponent implements OnInit {
           // at this point valid from the perspective of validators: next: parsing
           const result: ParseResult | null = parseNumberInput(normalizedForParsing);
           // at this point if no error was thrown: totally valid input
-          this.latestValidParsedInput = result;
+          this.latestValidParsedInput.set(result);
           // this will enable all "information cards" to see the latest input and output useful information
           this.parsedInputService.next(result);
           // store the input in the URL fragment for URL sharing
@@ -146,7 +146,7 @@ export class NumberInputComponent implements OnInit {
         }
       } else {
         // tell all "information cards" to show nothing
-        this.latestValidParsedInput = null;
+        this.latestValidParsedInput.set(null);
         this.parsedInputService.next(null);
       }
     });
@@ -172,8 +172,9 @@ export class NumberInputComponent implements OnInit {
    * hexadecimal integer bits representation.
    */
   onTransformToF32(): void {
-    if (this.latestValidParsedInput) {
-      const newInput = bigNumberAsFloatToIntegerHexBits(this.latestValidParsedInput.signedNumericValue);
+    const latestValidParsedInput = this.latestValidParsedInput();
+    if (latestValidParsedInput) {
+      const newInput = bigNumberAsFloatToIntegerHexBits(latestValidParsedInput.signedNumericValue);
       this.form.controls.numberInput.setValue(newInput);
     }
   }
@@ -183,8 +184,9 @@ export class NumberInputComponent implements OnInit {
    * hexadecimal integer bits representation.
    */
   onTransformToF64(): void {
-    if (this.latestValidParsedInput) {
-      const newInput = bigNumberAsDoubleToIntegerHexBits(this.latestValidParsedInput.signedNumericValue);
+    const latestValidParsedInput = this.latestValidParsedInput();
+    if (latestValidParsedInput) {
+      const newInput = bigNumberAsDoubleToIntegerHexBits(latestValidParsedInput.signedNumericValue);
       this.form.controls.numberInput.setValue(newInput);
     }
   }

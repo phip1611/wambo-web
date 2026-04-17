@@ -1,4 +1,4 @@
-import { Component, effect, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { ParsedInputService } from './service/parsed-input.service';
 import { NumberInputComponent } from './components/numberinput/number-input.component';
 import { NumeralSystemsOutputGroupComponent } from './components/numeral-systems-output-group/numeral-systems-output-group.component';
@@ -19,23 +19,10 @@ import { SiteInfoComponent } from './components/site-info/site-info.component';
     imports: [NumberInputComponent, NumeralSystemsOutputGroupComponent, UnitsOutputGroupComponent, Base1024UnitsOutputGroupComponent, SignedIntegersOutputGroupComponent, UnsignedIntegersOutputGroupComponent, OutputGroupIeee754Component, EndiannessOutputGroupComponent, SiteInfoComponent]
 })
 export class AppComponent {
-
-  /**
-   * Whether there is a valid input from that "information card" components
-   * can show useful information.
-   */
-  hasData: boolean = false;
-
-  /**
-   * Whether the user typed in a fraction.
-   */
-  isFraction: boolean = false;
-
   private readonly service = inject(ParsedInputService);
-
-  private readonly syncState = effect(() => {
+  readonly hasData = computed(() => this.service.input() !== null);
+  readonly isFraction = computed(() => {
       const val = this.service.input();
-      this.hasData = !!val;
-      this.isFraction = this.hasData && !!val?.unsignedFractionPart;
+      return !!val?.unsignedFractionPart;
   });
 }

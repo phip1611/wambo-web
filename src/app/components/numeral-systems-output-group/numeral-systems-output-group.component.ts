@@ -1,6 +1,5 @@
-import { Component, effect, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { ParsedInputService } from '../../service/parsed-input.service';
-import { ParseResult } from '../../service/parsing/parse-result';
 import { MonoComponent } from '../mono/mono.component';
 
 @Component({
@@ -9,27 +8,18 @@ import { MonoComponent } from '../mono/mono.component';
     imports: [MonoComponent]
 })
 export class NumeralSystemsOutputGroupComponent {
-
-  parsed: ParseResult | null = null;
-  output = {
-    bin: '',
-    oct: '',
-    dec: '',
-    hex: '',
-  };
-
   private readonly service = inject(ParsedInputService);
-
-  private readonly syncOutput = effect(() => {
-      const pr = this.service.input();
-      if (!!pr) {
-        this.parsed = pr;
-        this.output.bin = this.parsed.signedNumericValue.toString(2);
-        this.output.oct = this.parsed.signedNumericValue.toString(8);
-        this.output.dec = this.parsed.signedNumericValue.toString(10);
-        this.output.hex = this.parsed.signedNumericValue.toString(16);
-      } else {
-        this.parsed = null;
+  readonly parsed = this.service.input;
+  readonly output = computed(() => {
+      const parsed = this.parsed();
+      if (!parsed) {
+        return null;
       }
+      return {
+        bin: parsed.signedNumericValue.toString(2),
+        oct: parsed.signedNumericValue.toString(8),
+        dec: parsed.signedNumericValue.toString(10),
+        hex: parsed.signedNumericValue.toString(16),
+      };
   });
 }
