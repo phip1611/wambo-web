@@ -1,10 +1,12 @@
 {
+  # Helper
   buildNpmPackage,
-  nodejs_24,
-  fd,
-  ouch,
-  brotli,
   nix-gitignore,
+  # Packages
+  brotli,
+  fd,
+  nodejs_24,
+  ouch,
 }:
 
 buildNpmPackage {
@@ -31,7 +33,7 @@ buildNpmPackage {
     '';
   */
 
-  npmDepsHash = "sha256-3XoUphLUjsYh/G+DqM//g85/3hYnhM7S2BBwas6qTFY=";
+  npmDepsHash = "sha256-eBgPdwDoIvOQan7kYaGWijORzCcI+WuGJfSxTZ4bteo=";
 
   npmBuildScript = "build_prod";
 
