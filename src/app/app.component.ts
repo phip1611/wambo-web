@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ParsedInputService } from './service/parsed-input.service';
 
@@ -24,9 +24,7 @@ export class AppComponent implements OnInit, OnDestroy {
   isFraction: boolean = false;
 
   private subscription: Subscription | null = null;
-
-  constructor(private service: ParsedInputService) {
-  }
+  private readonly service = inject(ParsedInputService);
 
   ngOnInit(): void {
     this.subscription = this.service.getInput$().subscribe(val => {

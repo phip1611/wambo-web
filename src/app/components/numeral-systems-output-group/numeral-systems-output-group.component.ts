@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { ParsedInputService } from '../../service/parsed-input.service';
 import { ParseResult } from '../../service/parsing/parse-result';
 
@@ -17,7 +17,7 @@ export class NumeralSystemsOutputGroupComponent implements OnInit {
     hex: '',
   };
 
-  constructor(private service: ParsedInputService) { }
+  private readonly service = inject(ParsedInputService);
 
   ngOnInit(): void {
     this.service.getInput$().subscribe(pr => {

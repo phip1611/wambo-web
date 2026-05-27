@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { bignumberWholePartToUnsignedBitStringOfLength, BitLength } from '../../service/bit.util';
 import { toUInt16, toUInt32, toUInt64, toUInt8 } from '../../service/int-convert.util';
 import { ParsedInputService } from '../../service/parsed-input.service';
@@ -20,7 +20,7 @@ export class UnsignedIntegersOutputGroupComponent implements OnInit {
     bits: '',
   };
 
-  constructor(private service: ParsedInputService) { }
+  private readonly service = inject(ParsedInputService);
 
   ngOnInit(): void {
     this.service.getInput$().subscribe(pr => {

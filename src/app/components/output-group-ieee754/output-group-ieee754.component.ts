@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { bignumberWholePartToUnsignedBitStringOfLength, BitLength } from '../../service/bit.util';
 import { bigNumberWholePartBitsToF32Value, bigNumberWholePartBitsToF64Value } from '../../service/ieee754-convert.util';
 import { ParsedInputService } from '../../service/parsed-input.service';
@@ -19,8 +19,7 @@ export class OutputGroupIeee754Component implements OnInit {
     bits: '',
   };
 
-  constructor(private service: ParsedInputService) {
-  }
+  private readonly service = inject(ParsedInputService);
 
   ngOnInit(): void {
     this.service.getInput$().subscribe(pr => {

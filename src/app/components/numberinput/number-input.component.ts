@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild, inject } from '@angular/core';
 import { AbstractControl, UntypedFormBuilder, UntypedFormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import * as XRegExp from 'xregexp';
@@ -13,10 +13,8 @@ import { ParseResult } from '../../service/parsing/parse-result';
     standalone: false
 })
 export class NumberInputComponent implements OnInit, AfterViewInit, OnDestroy {
-
-  constructor(private fb: UntypedFormBuilder,
-              private parsedInputService: ParsedInputService) {
-  }
+  private readonly fb = inject(UntypedFormBuilder);
+  private readonly parsedInputService = inject(ParsedInputService);
 
   private latestValidParsedInput: ParseResult | null = null;
 

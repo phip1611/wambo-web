@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { ParsedInputService } from '../../service/parsed-input.service';
 import { ParseResult } from '../../service/parsing/parse-result';
 import { fromBaseToUnit, Unit } from '../../service/parsing/unit';
@@ -18,7 +18,7 @@ export class UnitsOutputGroupComponent implements OnInit {
     tera: '',
   };
 
-  constructor(private service: ParsedInputService) { }
+  private readonly service = inject(ParsedInputService);
 
   ngOnInit(): void {
     this.service.getInput$().subscribe(pr => {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { bignumberWholePartToUnsignedBitStringOfLength, BitLength } from '../../service/bit.util';
 import { Endianness, getSystemEndianness } from '../../service/endianness.util';
 import { ParsedInputService } from '../../service/parsed-input.service';
@@ -22,8 +22,7 @@ export class EndiannessOutputGroupComponent implements OnInit {
     byteLE3: '',
   };
 
-  constructor(private service: ParsedInputService) {
-  }
+  private readonly service = inject(ParsedInputService);
 
   ngOnInit(): void {
     this.service.getInput$().subscribe(pr => {
