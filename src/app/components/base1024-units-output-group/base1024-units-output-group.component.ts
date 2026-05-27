@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, effect, inject } from '@angular/core';
 import { ParsedInputService } from '../../service/parsed-input.service';
 import { ParseResult } from '../../service/parsing/parse-result';
 import { fromBaseToUnit, Unit } from '../../service/parsing/unit';
@@ -8,7 +8,7 @@ import { fromBaseToUnit, Unit } from '../../service/parsing/unit';
     templateUrl: './base1024-units-output-group.component.html',
     standalone: false
 })
-export class Base1024UnitsOutputGroupComponent implements OnInit {
+export class Base1024UnitsOutputGroupComponent {
 
   parsed: ParseResult | null = null;
   output = {
@@ -20,8 +20,8 @@ export class Base1024UnitsOutputGroupComponent implements OnInit {
 
   private readonly service = inject(ParsedInputService);
 
-  ngOnInit(): void {
-    this.service.getInput$().subscribe(pr => {
+  private readonly syncOutput = effect(() => {
+      const pr = this.service.input();
       if (!!pr) {
         this.parsed = pr;
         this.output.kib = fromBaseToUnit(Unit.Kibi, this.parsed.signedNumericValue).toString(10);
@@ -31,7 +31,5 @@ export class Base1024UnitsOutputGroupComponent implements OnInit {
       } else {
         this.parsed = null;
       }
-    });
-  }
-
+  });
 }

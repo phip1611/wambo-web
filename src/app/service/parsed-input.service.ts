@@ -1,16 +1,12 @@
-import { Injectable } from '@angular/core';
-import { Observable, ReplaySubject } from 'rxjs';
+import { Injectable, signal } from '@angular/core';
 import { ParseResult } from './parsing/parse-result';
 
 @Injectable({providedIn: 'root'})
 export class ParsedInputService {
-  private input$ = new ReplaySubject<ParseResult | null>(1);
+  private readonly inputState = signal<ParseResult | null>(null);
+  readonly input = this.inputState.asReadonly();
 
   next(pr: ParseResult | null): void {
-    this.input$.next(pr);
-  }
-
-  getInput$(): Observable<ParseResult | null> {
-    return this.input$.asObservable();
+    this.inputState.set(pr);
   }
 }

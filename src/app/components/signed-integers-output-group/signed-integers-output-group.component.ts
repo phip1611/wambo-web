@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, effect, inject } from '@angular/core';
 import { bignumberWholePartToUnsignedBitStringOfLength, BitLength } from '../../service/bit.util';
 import { toSInt16, toSInt32, toSInt64, toSInt8 } from '../../service/int-convert.util';
 import { ParsedInputService } from '../../service/parsed-input.service';
@@ -9,7 +9,7 @@ import { ParseResult } from '../../service/parsing/parse-result';
     templateUrl: './signed-integers-output-group.component.html',
     standalone: false
 })
-export class SignedIntegersOutputGroupComponent implements OnInit {
+export class SignedIntegersOutputGroupComponent {
 
   parsed: ParseResult | null = null;
   output = {
@@ -22,8 +22,8 @@ export class SignedIntegersOutputGroupComponent implements OnInit {
 
   private readonly service = inject(ParsedInputService);
 
-  ngOnInit(): void {
-    this.service.getInput$().subscribe(pr => {
+  private readonly syncOutput = effect(() => {
+      const pr = this.service.input();
       if (!!pr) {
         this.parsed = pr;
         this.output.i8 = toSInt8(this.parsed.unsignedWholePart).toString();
@@ -35,6 +35,5 @@ export class SignedIntegersOutputGroupComponent implements OnInit {
       } else {
         this.parsed = null;
       }
-    });
-  }
+  });
 }

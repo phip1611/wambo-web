@@ -1,5 +1,4 @@
-import { Component, OnDestroy, OnInit, inject } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, effect, inject } from '@angular/core';
 import { ParsedInputService } from './service/parsed-input.service';
 
 /**
@@ -10,7 +9,7 @@ import { ParsedInputService } from './service/parsed-input.service';
     templateUrl: './app.component.html',
     standalone: false
 })
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent {
 
   /**
    * Whether there is a valid input from that "information card" components
@@ -23,22 +22,11 @@ export class AppComponent implements OnInit, OnDestroy {
    */
   isFraction: boolean = false;
 
-  private subscription: Subscription | null = null;
   private readonly service = inject(ParsedInputService);
 
-  ngOnInit(): void {
-    this.subscription = this.service.getInput$().subscribe(val => {
+  private readonly syncState = effect(() => {
+      const val = this.service.input();
       this.hasData = !!val;
       this.isFraction = this.hasData && !!val?.unsignedFractionPart;
-    });
-  }
-
-  ngOnDestroy(): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
-  }
-
-
-
+  });
 }

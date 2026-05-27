@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, effect, inject } from '@angular/core';
 import { bignumberWholePartToUnsignedBitStringOfLength, BitLength } from '../../service/bit.util';
 import { Endianness, getSystemEndianness } from '../../service/endianness.util';
 import { ParsedInputService } from '../../service/parsed-input.service';
@@ -10,7 +10,7 @@ import { back_substr } from '../../service/string.util';
     templateUrl: './endianness-output-group.component.html',
     standalone: false
 })
-export class EndiannessOutputGroupComponent implements OnInit {
+export class EndiannessOutputGroupComponent {
 
   parsed: ParseResult | null = null;
   output = {
@@ -24,8 +24,8 @@ export class EndiannessOutputGroupComponent implements OnInit {
 
   private readonly service = inject(ParsedInputService);
 
-  ngOnInit(): void {
-    this.service.getInput$().subscribe(pr => {
+  private readonly syncOutput = effect(() => {
+      const pr = this.service.input();
       if (!!pr) {
         this.parsed = pr;
         // Endianness[] -> numeric value to string
@@ -38,6 +38,5 @@ export class EndiannessOutputGroupComponent implements OnInit {
       } else {
         this.parsed = null;
       }
-    });
-  }
+  });
 }

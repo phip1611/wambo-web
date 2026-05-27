@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, effect, inject } from '@angular/core';
 import { bignumberWholePartToUnsignedBitStringOfLength, BitLength } from '../../service/bit.util';
 import { bigNumberWholePartBitsToF32Value, bigNumberWholePartBitsToF64Value } from '../../service/ieee754-convert.util';
 import { ParsedInputService } from '../../service/parsed-input.service';
@@ -9,7 +9,7 @@ import { ParseResult } from '../../service/parsing/parse-result';
     templateUrl: './output-group-ieee754.component.html',
     standalone: false
 })
-export class OutputGroupIeee754Component implements OnInit {
+export class OutputGroupIeee754Component {
 
   parsed: ParseResult | null = null;
   output = {
@@ -21,8 +21,8 @@ export class OutputGroupIeee754Component implements OnInit {
 
   private readonly service = inject(ParsedInputService);
 
-  ngOnInit(): void {
-    this.service.getInput$().subscribe(pr => {
+  private readonly syncOutput = effect(() => {
+      const pr = this.service.input();
       if (!!pr) {
         this.parsed = pr;
         this.output.f32 = bigNumberWholePartBitsToF32Value(
@@ -35,8 +35,5 @@ export class OutputGroupIeee754Component implements OnInit {
       } else {
         this.parsed = null;
       }
-    });
-  }
-
-
+  });
 }

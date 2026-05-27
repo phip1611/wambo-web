@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, effect, inject } from '@angular/core';
 import { ParsedInputService } from '../../service/parsed-input.service';
 import { ParseResult } from '../../service/parsing/parse-result';
 
@@ -7,7 +7,7 @@ import { ParseResult } from '../../service/parsing/parse-result';
     templateUrl: './numeral-systems-output-group.component.html',
     standalone: false
 })
-export class NumeralSystemsOutputGroupComponent implements OnInit {
+export class NumeralSystemsOutputGroupComponent {
 
   parsed: ParseResult | null = null;
   output = {
@@ -19,8 +19,8 @@ export class NumeralSystemsOutputGroupComponent implements OnInit {
 
   private readonly service = inject(ParsedInputService);
 
-  ngOnInit(): void {
-    this.service.getInput$().subscribe(pr => {
+  private readonly syncOutput = effect(() => {
+      const pr = this.service.input();
       if (!!pr) {
         this.parsed = pr;
         this.output.bin = this.parsed.signedNumericValue.toString(2);
@@ -30,7 +30,5 @@ export class NumeralSystemsOutputGroupComponent implements OnInit {
       } else {
         this.parsed = null;
       }
-    });
-  }
-
+  });
 }
