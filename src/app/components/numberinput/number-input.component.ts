@@ -1,7 +1,6 @@
 import { Component, DestroyRef, OnInit, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { AbstractControl, NonNullableFormBuilder, ValidationErrors, ValidatorFn, Validators, ReactiveFormsModule } from '@angular/forms';
-import XRegExp from 'xregexp';
 import { bigNumberAsDoubleToIntegerHexBits, bigNumberAsFloatToIntegerHexBits } from '../../service/ieee754-convert.util';
 import { ParsedInputService } from '../../service/parsed-input.service';
 import { NUMBER_INPUT_REGEX, parseNumberInput } from '../../service/parsing/parse';
@@ -226,7 +225,7 @@ const numberInputValidator: ValidatorFn = (control: AbstractControl): Validation
     return null;
   }
   value = NumberInputComponent.prepareInputForParsing(value);
-  const match = XRegExp.exec(value, NUMBER_INPUT_REGEX);
+  const match = value.match(NUMBER_INPUT_REGEX);
   if (!match || !match.groups?.numeric_value) {
     return {
       invalid: true

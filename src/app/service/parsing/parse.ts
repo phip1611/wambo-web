@@ -1,27 +1,28 @@
-import XRegExp from 'xregexp';
 import { splitBigNumberToWholeAndMaybeFractionPart } from '../bignumber.util';
 import { NumeralSystem, parseNumberStringAsNumeralSystem, parseNumeralSystemFromString } from './ns';
 import { ParseResult } from './parse-result';
 import { fromUnitToBase, parseUnitFromString, Unit } from './unit';
 
-export const NUMBER_INPUT_REGEX = XRegExp(`
-     ^                                  # string begin
-     (?<sign>          -)?              # optional sign
-     (?<ns>            0(b|o|x){1})?    # optional numeral system
-  `
-  // (?<whole_part>    [0-9abcdef]+)    # mandatory whole part
-  // (?<fraction_part> \.[0-9abcdef]+)? # optional fraction part
-  + `(?<numeric_value> [0-9abcdef]+(\\.[0-9abcdef]+)?)?   # numeric value, possibly with fraction
-     (?<unit>          [a-z]{1,4})?     # optional unit
-     $`, 'x' // x for free spacing and line comments
-);
+export const NUMBER_INPUT_REGEX = new RegExp([
+  '^',                                      // string begin
+  '(?<sign>-)?',                           // optional sign
+  '(?<ns>0(?:b|o|x))?',                    // optional numeral system
+  // '(?<whole_part>[0-9abcdef]+)',        // mandatory whole part
+  // '(?<fraction_part>\\.[0-9abcdef]+)?', // optional fraction part
+  '(?<numeric_value>',                      // optional numeric value
+  '[0-9abcdef]+',
+  '(?:\\.[0-9abcdef]+)?',
+  ')?',
+  '(?<unit>[a-z]{1,4})?',                  // optional unit
+  '$',                                      // string end
+].join(''));
 
 // Parses the input. Expects normalized input without underscores,
 // a maximum of one ".", no ",", and no "_".
 export function parseNumberInput(normalizedParsingInput: string): ParseResult {
   console.log('normalized parsing input: ', normalizedParsingInput);
 
-  const match = XRegExp.exec(normalizedParsingInput, NUMBER_INPUT_REGEX);
+  const match = normalizedParsingInput.match(NUMBER_INPUT_REGEX);
   if (!match || !match.groups) {
     throw new Error(`Doesn't match RegEx`);
   }

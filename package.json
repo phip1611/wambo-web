@@ -28,12 +28,10 @@
     "@angular/platform-browser-dynamic": "21.2.9",
     "@angular/router": "21.2.9",
     "@angular/service-worker": "21.2.9",
-    "@types/xregexp": "4.3.0",
     "bignumber.js": "9.1.0",
     "bootstrap": "5.2.2",
     "rxjs": "7.8.1",
     "tslib": "2.4.1",
-    "xregexp": "5.1.1",
     "zone.js": "0.15.1"
   },
   "devDependencies": {
