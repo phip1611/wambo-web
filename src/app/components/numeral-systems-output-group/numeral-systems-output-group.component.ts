@@ -1,35 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { ParsedInputService } from '../../service/parsed-input.service';
-import { ParseResult } from '../../service/parsing/parse-result';
+import { MonoComponent } from '../mono/mono.component';
 
 @Component({
-  selector: 'app-numeral-systems-output-group',
-  templateUrl: './numeral-systems-output-group.component.html'
+    selector: 'app-numeral-systems-output-group',
+    templateUrl: './numeral-systems-output-group.component.html',
+    imports: [MonoComponent]
 })
-export class NumeralSystemsOutputGroupComponent implements OnInit {
-
-  parsed: ParseResult | null = null;
-  output = {
-    bin: '',
-    oct: '',
-    dec: '',
-    hex: '',
-  };
-
-  constructor(private service: ParsedInputService) { }
-
-  ngOnInit(): void {
-    this.service.getInput$().subscribe(pr => {
-      if (!!pr) {
-        this.parsed = pr;
-        this.output.bin = this.parsed.signedNumericValue.toString(2);
-        this.output.oct = this.parsed.signedNumericValue.toString(8);
-        this.output.dec = this.parsed.signedNumericValue.toString(10);
-        this.output.hex = this.parsed.signedNumericValue.toString(16);
-      } else {
-        this.parsed = null;
+export class NumeralSystemsOutputGroupComponent {
+  private readonly service = inject(ParsedInputService);
+  readonly parsed = this.service.input;
+  readonly output = computed(() => {
+      const parsed = this.parsed();
+      if (!parsed) {
+        return null;
       }
-    });
-  }
-
+      return {
+        bin: parsed.signedNumericValue.toString(2),
+        oct: parsed.signedNumericValue.toString(8),
+        dec: parsed.signedNumericValue.toString(10),
+        hex: parsed.signedNumericValue.toString(16),
+      };
+  });
 }

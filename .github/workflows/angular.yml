@@ -10,7 +10,7 @@ jobs:
     strategy:
       matrix:
         node-version:
-          - 22.x # latest LTS
+          - 24.x # latest LTS
     steps:
       - uses: actions/checkout@v6
       - name: Use Latest LTS Node.js ${{ matrix.node-version }}
@@ -20,8 +20,16 @@ jobs:
       - name: Install NPM Dependencies
         run:  npm ci
       - name: Test `ng serve`
-        # Takes usually only 12 seconds but to prevent a flaky CI, I use a timeout of 60 secs
-        run:  timeout 60 npm run start_ci | grep -q "Compiled successfully"
+        run: |
+          npm run start_ci -- --host 127.0.0.1 > ng-serve.log 2>&1 &
+          ng_serve_pid=$!
+          trap 'kill $ng_serve_pid' EXIT
+
+          timeout 60 bash -c '
+            until curl --silent --fail http://127.0.0.1:4200 > /dev/null; do
+              sleep 1
+            done
+          '
 
   # Builds the web-app using NPM.
   build_npm:
@@ -29,7 +37,7 @@ jobs:
     strategy:
       matrix:
         node-version:
-          - 22.x # latest LTS
+          - 24.x # latest LTS
     steps:
       - uses: actions/checkout@v6
       - name: Use Latest LTS Node.js ${{ matrix.node-version }}
@@ -82,7 +90,7 @@ jobs:
     strategy:
       matrix:
         node-version:
-          - 22.x # latest LTS
+          - 24.x # latest LTS
     steps:
       - uses: actions/checkout@v6
       - name: Use Latest LTS Node.js ${{ matrix.node-version }}

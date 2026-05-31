@@ -2,37 +2,42 @@
 <div class="card h-100">
   <div class="card-body">
     <h1 class="app-title card-title">Welcome to <strong class="app-title__highlighted">Wambo Web</strong>.</h1>
-    <form *ngIf="form" [formGroup]="form">
+    <form [formGroup]="form">
       <div class="form-group">
         <label for="numberInput" class="form-label">Input number in numeral system and unit of your choice</label>
         <!-- I took a few attributes like haspop=false from google search
-             in order to prevent any kind of browser generated popup. I didn't
-             know them before. -->
+        in order to prevent any kind of browser generated popup. I didn't
+        know them before. -->
         <input #numberInputElement
-               type="text"
-               name="numberInput"
-               formControlName="numberInput"
-               autocomplete="off"
-               autocorrect="off"
-               spellcheck="false"
-               haspopup="false"
-               autofocus
-               placeholder="0b100000000_11110000, 0x2, 1024ti"
-               title="Number in numeral system and unit of your choice"
-               class="form-control" id="numberInput" aria-describedby="numberInputHelp">
-
-        <div *ngIf="form.get('numberInput')?.hasError('invalid')"
-             class="alert alert-danger form-text my-2" role="alert">
+          type="text"
+          name="numberInput"
+          formControlName="numberInput"
+          autocomplete="off"
+          autocorrect="off"
+          spellcheck="false"
+          haspopup="false"
+          autofocus
+          placeholder="0b100000000_11110000, 0x2, 1024ti"
+          title="Number in numeral system and unit of your choice"
+          class="form-control" id="numberInput" aria-describedby="numberInputHelp">
+        @if (form.get('numberInput')?.hasError('invalid')) {
+          <div
+            class="alert alert-danger form-text my-2" role="alert">
             🚨️ Your input is invalid.
-        </div>
-        <div *ngIf="form.get('numberInput')?.hasError('i18n')"
-             class="alert alert-warning form-text my-2" role="alert">
-          ⚠️ Please use english number format. "." (point/dot) as delimiter of whole and fraction part, e.g. "<code>3.141</code>".
-        </div>
-        <div *ngIf="form.get('numberInput')?.hasError('big_number_sep')"
-             class="alert alert-warning form-text my-2" role="alert">
-          ⚠️ Please use <code>_</code> (underscore) to increase readability of big numbers. For example <code>0b10000000_10000000</code> or <code>1_000_000</code>.
-        </div>
+          </div>
+        }
+        @if (form.get('numberInput')?.hasError('i18n')) {
+          <div
+            class="alert alert-warning form-text my-2" role="alert">
+            ⚠️ Please use english number format. "." (point/dot) as delimiter of whole and fraction part, e.g. "<code>3.141</code>".
+          </div>
+        }
+        @if (form.get('numberInput')?.hasError('big_number_sep')) {
+          <div
+            class="alert alert-warning form-text my-2" role="alert">
+            ⚠️ Please use <code>_</code> (underscore) to increase readability of big numbers. For example <code>0b10000000_10000000</code> or <code>1_000_000</code>.
+          </div>
+        }
       </div>
     </form>
 
@@ -41,9 +46,9 @@
       <div class="accordion-item">
         <h2 class="accordion-header" id="numberInputHelpHeading1">
           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                  data-bs-target="#numberInputHelpItem1" aria-expanded="false" aria-controls="numberInputHelpItem1"
-                  title="show input help"
-          >
+            data-bs-target="#numberInputHelpItem1" aria-expanded="false" aria-controls="numberInputHelpItem1"
+            title="show input help"
+            >
             show input help
           </button>
         </h2>
@@ -83,29 +88,37 @@
     <!-- wide view -->
     <div class="d-none d-lg-block mt-2">
       <!-- me-2: is the new margin-left in bt@v5.0:
-           https://getbootstrap.com/docs/5.0/utilities/spacing/#margin-and-padding -->
-      <button *ngIf="form?.valid" type="button" class="btn btn-secondary me-2"
-              title="Transform input to f32 (float) bits"
-              (click)="onTransformToF32()"
-      >Transform to f32 (float)</button>
-      <button  *ngIf="form?.valid" type="button" class="btn btn-secondary"
-               title="Transform input to f64 (double) bits"
-               (click)="onTransformToF64()"
-      >Transform to f64 (double)</button>
+      https://getbootstrap.com/docs/5.0/utilities/spacing/#margin-and-padding -->
+      @if (form.valid) {
+        <button type="button" class="btn btn-secondary me-2"
+          title="Transform input to f32 (float) bits"
+          (click)="onTransformToF32()"
+        >Transform to f32 (float)</button>
+      }
+      @if (form.valid) {
+        <button  type="button" class="btn btn-secondary"
+          title="Transform input to f64 (double) bits"
+          (click)="onTransformToF64()"
+        >Transform to f64 (double)</button>
+      }
     </div>
 
     <!-- small view -->
     <div class="d-block d-lg-none mt-2">
       <!-- me-2: is the new margin-left in bt@v5.0:
-           https://getbootstrap.com/docs/5.0/utilities/spacing/#margin-and-padding -->
-      <button *ngIf="form?.valid" type="button" class="btn btn-secondary mb-2 w-100"
-              title="Transform input to f32 (float) bits"
-              (click)="onTransformToF32()"
-      >Transform to f32 (float)</button>
-      <button  *ngIf="form?.valid" type="button" class="btn btn-secondary w-100"
-               title="Transform input to f64 (double) bits"
-               (click)="onTransformToF64()"
-      >Transform to f64 (double)</button>
+      https://getbootstrap.com/docs/5.0/utilities/spacing/#margin-and-padding -->
+      @if (form.valid) {
+        <button type="button" class="btn btn-secondary mb-2 w-100"
+          title="Transform input to f32 (float) bits"
+          (click)="onTransformToF32()"
+        >Transform to f32 (float)</button>
+      }
+      @if (form.valid) {
+        <button  type="button" class="btn btn-secondary w-100"
+          title="Transform input to f64 (double) bits"
+          (click)="onTransformToF64()"
+        >Transform to f64 (double)</button>
+      }
     </div>
 
   </div>

@@ -1,5 +1,4 @@
 import BigNumber from 'bignumber.js';
-import * as XRegExp from 'xregexp';
 
 export enum NumeralSystem {
   Binary,
@@ -16,9 +15,7 @@ export function parseNumberStringAsNumeralSystem(ns: NumeralSystem, input: strin
   switch (ns) {
     case NumeralSystem.Binary: {
       // at this point there can only be at maximum one "." in the string
-      const REGEX = XRegExp(`^[01\.]+$`);
-      const match = XRegExp.match(input, REGEX);
-      if (!match) {
+      if (!/^[01.]+$/.test(input)) {
         throw new Error('Binary numbers must only contain digits 0 and 1!');
       }
       // big number has a string constructor that understands the
@@ -26,9 +23,7 @@ export function parseNumberStringAsNumeralSystem(ns: NumeralSystem, input: strin
       return new BigNumber(`0b${input}`);
     }
     case NumeralSystem.Octal: {
-      const REGEX = XRegExp(`^[0-7\.]+$`);
-      const match = XRegExp.match(input, REGEX);
-      if (!match) {
+      if (!/^[0-7.]+$/.test(input)) {
         throw new Error('Octal numbers must only contain digits 0-7!');
       }
       // big number has a string constructor that understands the
@@ -36,9 +31,7 @@ export function parseNumberStringAsNumeralSystem(ns: NumeralSystem, input: strin
       return new BigNumber(`0o${input}`);
     }
     case NumeralSystem.Dec: {
-      const REGEX = XRegExp(`^[0-9\.]+$`);
-      const match = XRegExp.match(input, REGEX);
-      if (!match) {
+      if (!/^[0-9.]+$/.test(input)) {
         throw new Error('Decimal numbers must only contain digits 0-9!');
       }
       // big number has a string constructor that understands the
@@ -46,9 +39,7 @@ export function parseNumberStringAsNumeralSystem(ns: NumeralSystem, input: strin
       return new BigNumber(input);
     }
     case NumeralSystem.Hex: {
-      const REGEX = XRegExp(`^[0-9abcdef\.]+$`);
-      const match = XRegExp.match(input, REGEX);
-      if (!match) {
+      if (!/^[0-9abcdef.]+$/.test(input)) {
         throw new Error('Decimal numbers must only contain digits 0-9!');
       }
       // big number has a string constructor that understands the
