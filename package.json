@@ -13,7 +13,8 @@
     "test": "ng test --watch=false",
     "test-watch": "ng test",
     "lint": "ng lint",
-    "format": "prettier --write \"**/*.{ts,html,scss,json,md,yml,yaml}\""
+    "format": "prettier --write \"**/*.{ts,html,scss,json,md,yml,yaml}\"",
+    "format:check": "prettier --check \"**/*.{ts,html,scss,json,md,yml,yaml}\""
   },
   "private": true,
   "engines": {
