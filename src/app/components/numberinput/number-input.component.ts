@@ -1,15 +1,25 @@
 import { Component, DestroyRef, ElementRef, OnInit, afterNextRender, inject, signal, viewChild } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { AbstractControl, NonNullableFormBuilder, ValidationErrors, ValidatorFn, Validators, ReactiveFormsModule } from '@angular/forms';
-import { bigNumberAsDoubleToIntegerHexBits, bigNumberAsFloatToIntegerHexBits } from '../../service/ieee754-convert.util';
+import {
+  AbstractControl,
+  NonNullableFormBuilder,
+  ValidationErrors,
+  ValidatorFn,
+  Validators,
+  ReactiveFormsModule,
+} from '@angular/forms';
+import {
+  bigNumberAsDoubleToIntegerHexBits,
+  bigNumberAsFloatToIntegerHexBits,
+} from '../../service/ieee754-convert.util';
 import { ParsedInputService } from '../../service/parsed-input.service';
 import { NUMBER_INPUT_REGEX, parseNumberInput } from '../../service/parsing/parse';
 import { ParseResult } from '../../service/parsing/parse-result';
 
 @Component({
-    selector: 'app-number-input',
-    templateUrl: './number-input.component.html',
-    imports: [ReactiveFormsModule]
+  selector: 'app-number-input',
+  templateUrl: './number-input.component.html',
+  imports: [ReactiveFormsModule],
 })
 export class NumberInputComponent implements OnInit {
   private readonly destroyRef = inject(DestroyRef);
@@ -20,12 +30,8 @@ export class NumberInputComponent implements OnInit {
   private readonly latestValidParsedInput = signal<ParseResult | null>(null);
   readonly form = this.fb.group({
     numberInput: this.fb.control('', {
-      validators: [
-        Validators.required,
-        numberInputValidator,
-        numberI18nValidator
-      ]
-    })
+      validators: [Validators.required, numberInputValidator, numberI18nValidator],
+    }),
   });
 
   constructor() {
@@ -96,11 +102,7 @@ export class NumberInputComponent implements OnInit {
    * @private
    */
   private static updateUrlFragment(input: string): void {
-    window.history.replaceState(
-      null,
-      document.title,
-      '#' + input
-    );
+    window.history.replaceState(null, document.title, '#' + input);
   }
 
   /*
@@ -129,9 +131,7 @@ export class NumberInputComponent implements OnInit {
     const numberInputControl = this.form.controls.numberInput;
 
     // on each form input (which can be invalid)
-    this.form.statusChanges
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe(() => {
+    this.form.statusChanges.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => {
       // if validators say: everything is ok
       if (this.form.valid) {
         const input = this.form.getRawValue().numberInput;
@@ -148,7 +148,7 @@ export class NumberInputComponent implements OnInit {
         } catch (e) {
           console.error('caught error during parsing', e);
           numberInputControl.setErrors({
-            invalid: true
+            invalid: true,
           });
         }
       } else {
@@ -159,15 +159,11 @@ export class NumberInputComponent implements OnInit {
     });
 
     // this is used to normalize the input while it is typed on the fly
-    numberInputControl.valueChanges
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe(input => {
+    numberInputControl.valueChanges.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((input) => {
       // continuously help user during input with auto normalization
       if (!NumberInputComponent.uiInputIsNormalized(input)) {
         // update value inside form
-        numberInputControl.setValue(
-          NumberInputComponent.normalizeInputUi(input)
-        );
+        numberInputControl.setValue(NumberInputComponent.normalizeInputUi(input));
       }
     });
 
@@ -221,7 +217,6 @@ const numberI18nValidator: ValidatorFn = (control: AbstractControl): ValidationE
   }
 };
 
-
 /**
  * Validator which checks the form input against the REGEX which will be used for parsing when
  * the form is valid.
@@ -237,7 +232,7 @@ const numberInputValidator: ValidatorFn = (control: AbstractControl): Validation
   const match = value.match(NUMBER_INPUT_REGEX);
   if (!match || !match.groups?.numeric_value) {
     return {
-      invalid: true
+      invalid: true,
     };
   } else {
     return null;

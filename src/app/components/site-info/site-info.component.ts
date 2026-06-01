@@ -1,11 +1,10 @@
 import { Component, signal } from '@angular/core';
 
 @Component({
-    selector: 'app-site-info',
-    templateUrl: './site-info.component.html'
+  selector: 'app-site-info',
+  templateUrl: './site-info.component.html',
 })
 export class SiteInfoComponent {
-
   readonly bootstrapClasses = 'd-block d-md-inline-block py-1 py-md-0';
 
   /**

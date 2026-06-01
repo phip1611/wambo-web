@@ -14,15 +14,25 @@ import { SiteInfoComponent } from './components/site-info/site-info.component';
  * The app component is responsible for disabling "information card" components in some conditions.
  */
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    imports: [NumberInputComponent, NumeralSystemsOutputGroupComponent, UnitsOutputGroupComponent, Base1024UnitsOutputGroupComponent, SignedIntegersOutputGroupComponent, UnsignedIntegersOutputGroupComponent, OutputGroupIeee754Component, EndiannessOutputGroupComponent, SiteInfoComponent]
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  imports: [
+    NumberInputComponent,
+    NumeralSystemsOutputGroupComponent,
+    UnitsOutputGroupComponent,
+    Base1024UnitsOutputGroupComponent,
+    SignedIntegersOutputGroupComponent,
+    UnsignedIntegersOutputGroupComponent,
+    OutputGroupIeee754Component,
+    EndiannessOutputGroupComponent,
+    SiteInfoComponent,
+  ],
 })
 export class AppComponent {
   private readonly service = inject(ParsedInputService);
   readonly hasData = computed(() => this.service.input() !== null);
   readonly isFraction = computed(() => {
-      const val = this.service.input();
-      return !!val?.unsignedFractionPart;
+    const val = this.service.input();
+    return !!val?.unsignedFractionPart;
   });
 }

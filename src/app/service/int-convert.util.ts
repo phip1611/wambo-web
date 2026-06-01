@@ -62,7 +62,10 @@ export function toSInt64(num: BigNumber): BigNumber {
  *         interpretation of the original input (whole part only) would have.
  */
 function truncateIfSignBitIsSet(unsignedInt: BigNumber, bitLength: BitLength): BigNumber {
-  const unsignedIntegerBitStr = bignumberWholePartToUnsignedBitStringOfLength(unsignedInt, bitLength);
+  const unsignedIntegerBitStr = bignumberWholePartToUnsignedBitStringOfLength(
+    unsignedInt,
+    bitLength,
+  );
 
   const prefix = '0b';
   // bit string contains for example '0b10000000' => MSB is 1 for i8 => sign

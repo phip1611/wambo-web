@@ -22,8 +22,7 @@
       "installMode": "lazy",
       "updateMode": "prefetch",
       "resources": {
-        "files": [
-        ]
+        "files": []
       }
     }
   ]

@@ -7,8 +7,11 @@ export enum NumeralSystem {
   Hex,
 }
 
-
-export function parseNumberStringAsNumeralSystem(ns: NumeralSystem, input: string, isFraction = false): BigNumber {
+export function parseNumberStringAsNumeralSystem(
+  ns: NumeralSystem,
+  input: string,
+  isFraction = false,
+): BigNumber {
   if (isFraction) {
     input = input.split('.')[0];
   }
@@ -69,5 +72,4 @@ export function parseNumeralSystemFromString(input: string | null): NumeralSyste
       throw new Error(`illegal/unknown numeral system string '${input}'`);
     }
   }
-
 }

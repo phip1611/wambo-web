@@ -16,11 +16,13 @@ export enum BitLength {
  * @param num bignumber without fraction part
  * @param len length in bits
  */
-export function bignumberWholePartToUnsignedBitStringOfLength(num: BigNumber, len: BitLength): string {
+export function bignumberWholePartToUnsignedBitStringOfLength(
+  num: BigNumber,
+  len: BitLength,
+): string {
   const bitStr = num.toString(2);
   return '0b' + stringToExactLengthFromRightOrPadZerosLeft(bitStr, len);
 }
-
 
 /**
  * Takes a bitstring and returns it into a byte array in little endian format.

@@ -1,5 +1,9 @@
 import BigNumber from 'bignumber.js';
-import { bignumberWholePartToUnsignedBitStringOfLength, BitLength, fixedLengthBitStringByteArrayLE } from './bit.util';
+import {
+  bignumberWholePartToUnsignedBitStringOfLength,
+  BitLength,
+  fixedLengthBitStringByteArrayLE,
+} from './bit.util';
 import { stringToExactLengthFromRightOrPadZerosLeft } from './string.util';
 
 /**
@@ -131,15 +135,13 @@ export function bigNumberAsDoubleToIntegerHexBits(num: BigNumber): string {
 
   const u32LowerBitStr = stringToExactLengthFromRightOrPadZerosLeft(
     u32Lower.toString(16),
-    bit32LenInHexDigits
+    bit32LenInHexDigits,
   );
   const u32UpperBitStr = stringToExactLengthFromRightOrPadZerosLeft(
     u32Upper.toString(16),
-    bit32LenInHexDigits
+    bit32LenInHexDigits,
   );
 
   // + hex prefix
   return '0x' + u32UpperBitStr + u32LowerBitStr;
 }
-
-

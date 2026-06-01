@@ -11,7 +11,9 @@ const FRACTION_SEPARATOR = '.';
  *   BigNumber(7) => [BigNumber(7), null]
  * @param num bignumber that may or may not include a fraction part
  */
-export function splitBigNumberToWholeAndMaybeFractionPart(num: BigNumber): [BigNumber, BigNumber | null] {
+export function splitBigNumberToWholeAndMaybeFractionPart(
+  num: BigNumber,
+): [BigNumber, BigNumber | null] {
   // BigNumber(3.141) => "3.141"
   const numString = num.toString();
   const split = numString.split(FRACTION_SEPARATOR);
