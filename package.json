@@ -12,7 +12,8 @@
     "postbuild": "bash ./postbuild.sh",
     "test": "ng test --watch=false",
     "test-watch": "ng test",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "format": "prettier --write \"**/*.{ts,html,scss,json,md,yml,yaml}\""
   },
   "private": true,
   "engines": {
