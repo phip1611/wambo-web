@@ -1,4 +1,4 @@
-import { Component, DestroyRef, OnInit, inject, signal } from '@angular/core';
+import { Component, DestroyRef, ElementRef, OnInit, afterNextRender, inject, signal, viewChild } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { AbstractControl, NonNullableFormBuilder, ValidationErrors, ValidatorFn, Validators, ReactiveFormsModule } from '@angular/forms';
 import { bigNumberAsDoubleToIntegerHexBits, bigNumberAsFloatToIntegerHexBits } from '../../service/ieee754-convert.util';
@@ -15,6 +15,7 @@ export class NumberInputComponent implements OnInit {
   private readonly destroyRef = inject(DestroyRef);
   private readonly fb = inject(NonNullableFormBuilder);
   private readonly parsedInputService = inject(ParsedInputService);
+  private readonly numberInputElement = viewChild.required<ElementRef<HTMLInputElement>>('numberInputElement');
 
   private readonly latestValidParsedInput = signal<ParseResult | null>(null);
   readonly form = this.fb.group({
@@ -26,6 +27,12 @@ export class NumberInputComponent implements OnInit {
       ]
     })
   });
+
+  constructor() {
+    afterNextRender(() => {
+      this.numberInputElement().nativeElement.focus();
+    });
+  }
 
   /**
    * Normalizes the input from the input field and "normalizes" it,

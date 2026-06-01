@@ -29,7 +29,7 @@ export function parseNumberInput(normalizedParsingInput: string): ParseResult {
   // further parsed (except sign because it is too basic)
 
   // sign is optional
-  const sign: boolean = !!match.groups.sign;
+  const sign = !!match.groups.sign;
   const optNsString: string | null = match.groups.ns ?? null;
   const numericValueString: string = match.groups.numeric_value;
   if (!numericValueString) {

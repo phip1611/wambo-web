@@ -20,7 +20,7 @@ describe('parse test', () => {
       try {
         parseNumberInput(input);
         threwError = false;
-      } catch (e) {
+      } catch {
         threwError = true;
       }
       expect(threwError).toBeTrue();
