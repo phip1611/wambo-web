@@ -14,7 +14,10 @@ import { stringToExactLengthFromRightOrPadZerosLeft } from './string.util';
  */
 export function bigNumberWholePartBitsToF32Value(num: BigNumber): BigNumber {
   // BigNumber of "3.141" would become a binary 32 bit long string of decimal "3"
-  const wholePartBits = bignumberWholePartToUnsignedBitStringOfLength(num, BitLength.B32);
+  const wholePartBits = bignumberWholePartToUnsignedBitStringOfLength(
+    num,
+    BitLength.B32,
+  );
   // all bytes to a array of bit strings (WITHOUT 0b prefix)
   const bytes = fixedLengthBitStringByteArrayLE(wholePartBits);
 
@@ -39,7 +42,10 @@ export function bigNumberWholePartBitsToF32Value(num: BigNumber): BigNumber {
  */
 export function bigNumberWholePartBitsToF64Value(num: BigNumber): BigNumber {
   // BigNumber of "3.141" would become a binary 64 bit long string of decimal "3"
-  const wholePartBits = bignumberWholePartToUnsignedBitStringOfLength(num, BitLength.B64);
+  const wholePartBits = bignumberWholePartToUnsignedBitStringOfLength(
+    num,
+    BitLength.B64,
+  );
   // all bytes to a array of bit strings (WITHOUT 0b prefix)
   const bytes = fixedLengthBitStringByteArrayLE(wholePartBits);
 

@@ -1,6 +1,14 @@
 import { Component, computed, inject } from '@angular/core';
-import { bignumberWholePartToUnsignedBitStringOfLength, BitLength } from '../../service/bit.util';
-import { toUInt16, toUInt32, toUInt64, toUInt8 } from '../../service/int-convert.util';
+import {
+  bignumberWholePartToUnsignedBitStringOfLength,
+  BitLength,
+} from '../../service/bit.util';
+import {
+  toUInt16,
+  toUInt32,
+  toUInt64,
+  toUInt8,
+} from '../../service/int-convert.util';
 import { ParsedInputService } from '../../service/parsed-input.service';
 import { MonoComponent } from '../mono/mono.component';
 
@@ -22,7 +30,10 @@ export class UnsignedIntegersOutputGroupComponent {
       u16: toUInt16(parsed.unsignedWholePart).toString(),
       u32: toUInt32(parsed.unsignedWholePart).toString(),
       u64: toUInt64(parsed.unsignedWholePart).toString(),
-      bits: bignumberWholePartToUnsignedBitStringOfLength(parsed.unsignedWholePart, BitLength.B64),
+      bits: bignumberWholePartToUnsignedBitStringOfLength(
+        parsed.unsignedWholePart,
+        BitLength.B64,
+      ),
     };
   });
 }

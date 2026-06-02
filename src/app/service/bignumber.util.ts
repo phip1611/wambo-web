@@ -18,8 +18,12 @@ export function splitBigNumberToWholeAndMaybeFractionPart(
   const numString = num.toString();
   const split = numString.split(FRACTION_SEPARATOR);
   const wholePartString = split[0];
-  const fractionPartString = split[1] ? `0${FRACTION_SEPARATOR}${split[1]}` : null;
+  const fractionPartString = split[1]
+    ? `0${FRACTION_SEPARATOR}${split[1]}`
+    : null;
   const wholePart = new BigNumber(wholePartString);
-  const maybeFractionPart = fractionPartString ? new BigNumber(fractionPartString) : null;
+  const maybeFractionPart = fractionPartString
+    ? new BigNumber(fractionPartString)
+    : null;
   return [wholePart, maybeFractionPart];
 }

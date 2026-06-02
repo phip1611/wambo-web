@@ -1,5 +1,8 @@
 import { splitBigNumberToWholeAndMaybeFractionPart } from '../bignumber.util';
-import { parseNumberStringAsNumeralSystem, parseNumeralSystemFromString } from './ns';
+import {
+  parseNumberStringAsNumeralSystem,
+  parseNumeralSystemFromString,
+} from './ns';
 import { ParseResult } from './parse-result';
 import { fromUnitToBase, parseUnitFromString } from './unit';
 
@@ -41,10 +44,14 @@ export function parseNumberInput(normalizedParsingInput: string): ParseResult {
 
   const unit = parseUnitFromString(optUnitString);
   const ns = parseNumeralSystemFromString(optNsString);
-  const numericValueBaseUnit = parseNumberStringAsNumeralSystem(ns, numericValueString);
+  const numericValueBaseUnit = parseNumberStringAsNumeralSystem(
+    ns,
+    numericValueString,
+  );
   const unsignedNumericValue = fromUnitToBase(unit, numericValueBaseUnit);
 
-  const [wholePart, fractionPart] = splitBigNumberToWholeAndMaybeFractionPart(unsignedNumericValue);
+  const [wholePart, fractionPart] =
+    splitBigNumberToWholeAndMaybeFractionPart(unsignedNumericValue);
 
   // this is more like a unit test here.. actually I could move this out to a test
   if (unsignedNumericValue.isNegative()) {
@@ -64,7 +71,9 @@ export function parseNumberInput(normalizedParsingInput: string): ParseResult {
   }
 
   // may be negative
-  const signedNumericValue = sign ? unsignedNumericValue.negated() : unsignedNumericValue;
+  const signedNumericValue = sign
+    ? unsignedNumericValue.negated()
+    : unsignedNumericValue;
 
   return {
     sign,

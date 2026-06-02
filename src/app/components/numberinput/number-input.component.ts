@@ -1,4 +1,13 @@
-import { Component, DestroyRef, ElementRef, OnInit, afterNextRender, inject, signal, viewChild } from '@angular/core';
+import {
+  Component,
+  DestroyRef,
+  ElementRef,
+  OnInit,
+  afterNextRender,
+  inject,
+  signal,
+  viewChild,
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
   AbstractControl,
@@ -13,7 +22,10 @@ import {
   bigNumberAsFloatToIntegerHexBits,
 } from '../../service/ieee754-convert.util';
 import { ParsedInputService } from '../../service/parsed-input.service';
-import { NUMBER_INPUT_REGEX, parseNumberInput } from '../../service/parsing/parse';
+import {
+  NUMBER_INPUT_REGEX,
+  parseNumberInput,
+} from '../../service/parsing/parse';
 import { ParseResult } from '../../service/parsing/parse-result';
 
 @Component({
@@ -25,12 +37,17 @@ export class NumberInputComponent implements OnInit {
   private readonly destroyRef = inject(DestroyRef);
   private readonly fb = inject(NonNullableFormBuilder);
   private readonly parsedInputService = inject(ParsedInputService);
-  private readonly numberInputElement = viewChild.required<ElementRef<HTMLInputElement>>('numberInputElement');
+  private readonly numberInputElement =
+    viewChild.required<ElementRef<HTMLInputElement>>('numberInputElement');
 
   private readonly latestValidParsedInput = signal<ParseResult | null>(null);
   readonly form = this.fb.group({
     numberInput: this.fb.control('', {
-      validators: [Validators.required, numberInputValidator, numberI18nValidator],
+      validators: [
+        Validators.required,
+        numberInputValidator,
+        numberI18nValidator,
+      ],
     }),
   });
 
@@ -131,41 +148,49 @@ export class NumberInputComponent implements OnInit {
     const numberInputControl = this.form.controls.numberInput;
 
     // on each form input (which can be invalid)
-    this.form.statusChanges.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => {
-      // if validators say: everything is ok
-      if (this.form.valid) {
-        const input = this.form.getRawValue().numberInput;
-        try {
-          const normalizedForParsing = NumberInputComponent.prepareInputForParsing(input);
-          // at this point valid from the perspective of validators: next: parsing
-          const result: ParseResult | null = parseNumberInput(normalizedForParsing);
-          // at this point if no error was thrown: totally valid input
-          this.latestValidParsedInput.set(result);
-          // this will enable all "information cards" to see the latest input and output useful information
-          this.parsedInputService.next(result);
-          // store the input in the URL fragment for URL sharing
-          NumberInputComponent.updateUrlFragment(input);
-        } catch (e) {
-          console.error('caught error during parsing', e);
-          numberInputControl.setErrors({
-            invalid: true,
-          });
+    this.form.statusChanges
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe(() => {
+        // if validators say: everything is ok
+        if (this.form.valid) {
+          const input = this.form.getRawValue().numberInput;
+          try {
+            const normalizedForParsing =
+              NumberInputComponent.prepareInputForParsing(input);
+            // at this point valid from the perspective of validators: next: parsing
+            const result: ParseResult | null =
+              parseNumberInput(normalizedForParsing);
+            // at this point if no error was thrown: totally valid input
+            this.latestValidParsedInput.set(result);
+            // this will enable all "information cards" to see the latest input and output useful information
+            this.parsedInputService.next(result);
+            // store the input in the URL fragment for URL sharing
+            NumberInputComponent.updateUrlFragment(input);
+          } catch (e) {
+            console.error('caught error during parsing', e);
+            numberInputControl.setErrors({
+              invalid: true,
+            });
+          }
+        } else {
+          // tell all "information cards" to show nothing
+          this.latestValidParsedInput.set(null);
+          this.parsedInputService.next(null);
         }
-      } else {
-        // tell all "information cards" to show nothing
-        this.latestValidParsedInput.set(null);
-        this.parsedInputService.next(null);
-      }
-    });
+      });
 
     // this is used to normalize the input while it is typed on the fly
-    numberInputControl.valueChanges.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((input) => {
-      // continuously help user during input with auto normalization
-      if (!NumberInputComponent.uiInputIsNormalized(input)) {
-        // update value inside form
-        numberInputControl.setValue(NumberInputComponent.normalizeInputUi(input));
-      }
-    });
+    numberInputControl.valueChanges
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((input) => {
+        // continuously help user during input with auto normalization
+        if (!NumberInputComponent.uiInputIsNormalized(input)) {
+          // update value inside form
+          numberInputControl.setValue(
+            NumberInputComponent.normalizeInputUi(input),
+          );
+        }
+      });
 
     this.getInputFromUrlFragmentAndUpdateForm();
   }
@@ -177,7 +202,9 @@ export class NumberInputComponent implements OnInit {
   onTransformToF32(): void {
     const latestValidParsedInput = this.latestValidParsedInput();
     if (latestValidParsedInput) {
-      const newInput = bigNumberAsFloatToIntegerHexBits(latestValidParsedInput.signedNumericValue);
+      const newInput = bigNumberAsFloatToIntegerHexBits(
+        latestValidParsedInput.signedNumericValue,
+      );
       this.form.controls.numberInput.setValue(newInput);
     }
   }
@@ -189,7 +216,9 @@ export class NumberInputComponent implements OnInit {
   onTransformToF64(): void {
     const latestValidParsedInput = this.latestValidParsedInput();
     if (latestValidParsedInput) {
-      const newInput = bigNumberAsDoubleToIntegerHexBits(latestValidParsedInput.signedNumericValue);
+      const newInput = bigNumberAsDoubleToIntegerHexBits(
+        latestValidParsedInput.signedNumericValue,
+      );
       this.form.controls.numberInput.setValue(newInput);
     }
   }
@@ -200,7 +229,9 @@ export class NumberInputComponent implements OnInit {
  * e.g. "." as decimal separator and not "," as done in german.
  * @param control FormControl
  */
-const numberI18nValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
+const numberI18nValidator: ValidatorFn = (
+  control: AbstractControl,
+): ValidationErrors | null => {
   const value: string = control.value;
   if (!value || value === '') {
     // this case is covered by required validator
@@ -222,7 +253,9 @@ const numberI18nValidator: ValidatorFn = (control: AbstractControl): ValidationE
  * the form is valid.
  * @param control FormControl
  */
-const numberInputValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
+const numberInputValidator: ValidatorFn = (
+  control: AbstractControl,
+): ValidationErrors | null => {
   let value = control.value;
   if (!value || value === '') {
     // this case is covered by required validator

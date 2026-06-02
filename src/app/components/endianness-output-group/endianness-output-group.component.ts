@@ -1,5 +1,8 @@
 import { Component, computed, inject } from '@angular/core';
-import { bignumberWholePartToUnsignedBitStringOfLength, BitLength } from '../../service/bit.util';
+import {
+  bignumberWholePartToUnsignedBitStringOfLength,
+  BitLength,
+} from '../../service/bit.util';
 import { Endianness, getSystemEndianness } from '../../service/endianness.util';
 import { ParsedInputService } from '../../service/parsed-input.service';
 import { back_substr } from '../../service/string.util';

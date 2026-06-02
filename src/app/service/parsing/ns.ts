@@ -52,7 +52,9 @@ export function parseNumberStringAsNumeralSystem(
   }
 }
 
-export function parseNumeralSystemFromString(input: string | null): NumeralSystem {
+export function parseNumeralSystemFromString(
+  input: string | null,
+): NumeralSystem {
   switch (input) {
     case undefined:
     case null:

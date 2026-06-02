@@ -34,14 +34,15 @@
         }
         @if (form.get('numberInput')?.hasError('i18n')) {
           <div class="alert alert-warning form-text my-2" role="alert">
-            ⚠️ Please use english number format. "." (point/dot) as delimiter of whole and fraction
-            part, e.g. "<code>3.141</code>".
+            ⚠️ Please use english number format. "." (point/dot) as delimiter of
+            whole and fraction part, e.g. "<code>3.141</code>".
           </div>
         }
         @if (form.get('numberInput')?.hasError('big_number_sep')) {
           <div class="alert alert-warning form-text my-2" role="alert">
-            ⚠️ Please use <code>_</code> (underscore) to increase readability of big numbers. For
-            example <code>0b10000000_10000000</code> or <code>1_000_000</code>.
+            ⚠️ Please use <code>_</code> (underscore) to increase readability of
+            big numbers. For example <code>0b10000000_10000000</code> or
+            <code>1_000_000</code>.
           </div>
         }
       </div>
@@ -71,23 +72,31 @@
         >
           <div class="accordion-body pb-0">
             <small class="text-muted">
-              <code>0b</code> for binary, <code>0o</code> for octal, <code>0x</code> for hex
+              <code>0b</code> for binary, <code>0o</code> for octal,
+              <code>0x</code> for hex
               <br />
-              <code>k/kb</code> for kilobyte, or: <code>m/mb</code>, <code>g/gb</code>,
+              <code>k/kb</code> for kilobyte, or: <code>m/mb</code>,
+              <code>g/gb</code>,
               <code>t/tb</code>
               <br />
-              <code>ki/kib</code> for kibibyte, or: <code>mi/mib</code>, <code>gi/gib</code>,
+              <code>ki/kib</code> for kibibyte, or: <code>mi/mib</code>,
+              <code>gi/gib</code>,
               <code>ti/tib</code>
               <br />
-              Fraction numbers in english format (<code>3.141</code>) only, please.
-              <br />For long numbers you can use <code>1_000_000.141</code> (underscores).
+              Fraction numbers in english format (<code>3.141</code>) only,
+              please.
+              <br />For long numbers you can use
+              <code>1_000_000.141</code> (underscores).
               <br />
               <br />
               <strong>Valid values are for example:</strong>
               <ul>
                 <li><code>0b10000000_11110000</code></li>
                 <li><code>1mb</code></li>
-                <li><code>-0x1024.242kib</code> (negative kibibyte as hexadecimal fraction)</li>
+                <li>
+                  <code>-0x1024.242kib</code> (negative kibibyte as hexadecimal
+                  fraction)
+                </li>
               </ul>
             </small>
           </div>

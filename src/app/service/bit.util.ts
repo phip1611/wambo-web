@@ -1,5 +1,8 @@
 import BigNumber from 'bignumber.js';
-import { back_substr, stringToExactLengthFromRightOrPadZerosLeft } from './string.util';
+import {
+  back_substr,
+  stringToExactLengthFromRightOrPadZerosLeft,
+} from './string.util';
 
 export enum BitLength {
   B8 = 8,

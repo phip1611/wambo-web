@@ -3,32 +3,51 @@
   @if (output(); as output) {
     <div class="card h-100">
       <div class="card-body">
-        <h5 class="card-title">Value in Different Signed Integer Sizes (Two's Complement)</h5>
+        <h5 class="card-title">
+          Value in Different Signed Integer Sizes (Two's Complement)
+        </h5>
         <small class="text-muted"
-          >Interpreting the lowest x bits (takes whole part of user input w/o sign).</small
+          >Interpreting the lowest x bits (takes whole part of user input w/o
+          sign).</small
         >
         <div class="table-responsive">
           <table class="table table-striped mb-0 mt-1">
             <tbody>
-              <tr title="Integer bits of {{ parsed.unsignedWholePart.toString() }} as i8">
+              <tr
+                title="Integer bits of {{
+                  parsed.unsignedWholePart.toString()
+                }} as i8"
+              >
                 <td>&nbsp;&nbsp;i8</td>
                 <td class="text-purple">
                   <mono>{{ output.i8 }}</mono>
                 </td>
               </tr>
-              <tr title="Integer bits of {{ parsed.unsignedWholePart.toString() }} as i16">
+              <tr
+                title="Integer bits of {{
+                  parsed.unsignedWholePart.toString()
+                }} as i16"
+              >
                 <td>i16</td>
                 <td class="text-purple">
                   <mono>{{ output.i16 }}</mono>
                 </td>
               </tr>
-              <tr title="Integer bits of {{ parsed.unsignedWholePart.toString() }} as i32">
+              <tr
+                title="Integer bits of {{
+                  parsed.unsignedWholePart.toString()
+                }} as i32"
+              >
                 <td>i32</td>
                 <td class="text-purple">
                   <mono>{{ output.i32 }}</mono>
                 </td>
               </tr>
-              <tr title="Integer bits of {{ parsed.unsignedWholePart.toString() }} as i64">
+              <tr
+                title="Integer bits of {{
+                  parsed.unsignedWholePart.toString()
+                }} as i64"
+              >
                 <td>i64</td>
                 <td class="text-purple">
                   <mono>{{ output.i64 }}</mono>
@@ -50,9 +69,10 @@
             </tbody>
           </table>
           <small class="d-block mt-2 text-muted">
-            For example: <code>0b10000000</code> (<code>0x80</code>) is <code>-128</code> when
-            interpreted as <code>i8</code>, because the
-            <abbr title="Most significant bit">MSB</abbr> is <code>1</code>.<br />
+            For example: <code>0b10000000</code> (<code>0x80</code>) is
+            <code>-128</code> when interpreted as <code>i8</code>, because the
+            <abbr title="Most significant bit">MSB</abbr> is
+            <code>1</code>.<br />
             See
             <a
               class="link-primary"

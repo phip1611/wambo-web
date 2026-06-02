@@ -4,7 +4,16 @@ import { parseNumberInput } from './parse';
 describe('parse test', () => {
   it('should not accept input', () => {
     let threwError;
-    const inputs = ['faf', '  ', '131,141', '131..1414', '131.14.14', '-...', '-1.3.3.4', '-1.3.'];
+    const inputs = [
+      'faf',
+      '  ',
+      '131,141',
+      '131..1414',
+      '131.14.14',
+      '-...',
+      '-1.3.3.4',
+      '-1.3.',
+    ];
     inputs.forEach((input) => {
       // expect().toThrowError() doesn't work :(
       try {

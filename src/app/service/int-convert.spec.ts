@@ -50,7 +50,11 @@ describe('int-convert', () => {
     expect(toSInt8(new BigNumber(256)).toString()).toEqual('0');
     expect(toSInt16(new BigNumber('0xffff')).toString()).toEqual('-1');
     expect(toSInt32(new BigNumber('0xffffffff')).toString()).toEqual('-1');
-    expect(toUInt64(new BigNumber('0xffffffffffffffff')).toString(16)).toEqual('ffffffffffffffff');
-    expect(toSInt64(new BigNumber('0xffffffffffffffff')).toString()).toEqual('-1');
+    expect(toUInt64(new BigNumber('0xffffffffffffffff')).toString(16)).toEqual(
+      'ffffffffffffffff',
+    );
+    expect(toSInt64(new BigNumber('0xffffffffffffffff')).toString()).toEqual(
+      '-1',
+    );
   });
 });

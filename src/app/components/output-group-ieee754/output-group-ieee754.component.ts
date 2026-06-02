@@ -1,5 +1,8 @@
 import { Component, computed, inject } from '@angular/core';
-import { bignumberWholePartToUnsignedBitStringOfLength, BitLength } from '../../service/bit.util';
+import {
+  bignumberWholePartToUnsignedBitStringOfLength,
+  BitLength,
+} from '../../service/bit.util';
 import {
   bigNumberWholePartBitsToF32Value,
   bigNumberWholePartBitsToF64Value,
@@ -21,10 +24,17 @@ export class OutputGroupIeee754Component {
       return null;
     }
     return {
-      f32: bigNumberWholePartBitsToF32Value(parsed.unsignedWholePart).toString(),
+      f32: bigNumberWholePartBitsToF32Value(
+        parsed.unsignedWholePart,
+      ).toString(),
       // this is a double. Javascript uses a double for all numbers.
-      f64: bigNumberWholePartBitsToF64Value(parsed.unsignedWholePart).toString(),
-      bits: bignumberWholePartToUnsignedBitStringOfLength(parsed.unsignedWholePart, BitLength.B64),
+      f64: bigNumberWholePartBitsToF64Value(
+        parsed.unsignedWholePart,
+      ).toString(),
+      bits: bignumberWholePartToUnsignedBitStringOfLength(
+        parsed.unsignedWholePart,
+        BitLength.B64,
+      ),
     };
   });
 }

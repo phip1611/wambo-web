@@ -1,5 +1,8 @@
 import BigNumber from 'bignumber.js';
-import { bignumberWholePartToUnsignedBitStringOfLength, BitLength } from './bit.util';
+import {
+  bignumberWholePartToUnsignedBitStringOfLength,
+  BitLength,
+} from './bit.util';
 
 /**
  * Converts a {@link BigNumber} to the value it would have
@@ -61,7 +64,10 @@ export function toSInt64(num: BigNumber): BigNumber {
  * @return Returns a {@link BigNumber} that holds the value that a signed X bit int
  *         interpretation of the original input (whole part only) would have.
  */
-function truncateIfSignBitIsSet(unsignedInt: BigNumber, bitLength: BitLength): BigNumber {
+function truncateIfSignBitIsSet(
+  unsignedInt: BigNumber,
+  bitLength: BitLength,
+): BigNumber {
   const unsignedIntegerBitStr = bignumberWholePartToUnsignedBitStringOfLength(
     unsignedInt,
     bitLength,
@@ -88,7 +94,10 @@ function truncateIfSignBitIsSet(unsignedInt: BigNumber, bitLength: BitLength): B
  *         interpretation of the original input (whole part only) would have.
  */
 export function toUInt8(num: BigNumber): BigNumber {
-  const bitStr = bignumberWholePartToUnsignedBitStringOfLength(num, BitLength.B8);
+  const bitStr = bignumberWholePartToUnsignedBitStringOfLength(
+    num,
+    BitLength.B8,
+  );
   // BigNumber can handle '0b'-prefix
   return new BigNumber(bitStr);
 }
@@ -102,7 +111,10 @@ export function toUInt8(num: BigNumber): BigNumber {
  *         interpretation of the original input (whole part only) would have.
  */
 export function toUInt16(num: BigNumber): BigNumber {
-  const bitStr = bignumberWholePartToUnsignedBitStringOfLength(num, BitLength.B16);
+  const bitStr = bignumberWholePartToUnsignedBitStringOfLength(
+    num,
+    BitLength.B16,
+  );
   // BigNumber can handle '0b'-prefix
   return new BigNumber(bitStr);
 }
@@ -116,7 +128,10 @@ export function toUInt16(num: BigNumber): BigNumber {
  *         interpretation of the original input (whole part only) would have.
  */
 export function toUInt32(num: BigNumber): BigNumber {
-  const bitStr = bignumberWholePartToUnsignedBitStringOfLength(num, BitLength.B32);
+  const bitStr = bignumberWholePartToUnsignedBitStringOfLength(
+    num,
+    BitLength.B32,
+  );
   // BigNumber can handle '0b'-prefix
   return new BigNumber(bitStr);
 }
@@ -130,7 +145,10 @@ export function toUInt32(num: BigNumber): BigNumber {
  *         interpretation of the original input (whole part only) would have.
  */
 export function toUInt64(num: BigNumber): BigNumber {
-  const bitStr = bignumberWholePartToUnsignedBitStringOfLength(num, BitLength.B64);
+  const bitStr = bignumberWholePartToUnsignedBitStringOfLength(
+    num,
+    BitLength.B64,
+  );
   // BigNumber can handle '0b'-prefix
   return new BigNumber(bitStr);
 }
