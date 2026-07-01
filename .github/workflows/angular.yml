@@ -12,7 +12,7 @@ jobs:
         node-version:
           - 24.x # latest LTS
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: Use Latest LTS Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v6
         with:
@@ -39,7 +39,7 @@ jobs:
         node-version:
           - 24.x # latest LTS
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: Use Latest LTS Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v6
         with:
@@ -61,7 +61,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: build_npm
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: Download Web-App from Previous Stage
         uses: actions/download-artifact@v8
         with:
@@ -75,7 +75,7 @@ jobs:
   build_nix:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: cachix/install-nix-action@v31
         with:
           # This channel is only required to invoke "nix-shell".
@@ -92,7 +92,7 @@ jobs:
         node-version:
           - 24.x # latest LTS
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: Use Latest LTS Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v6
         with:
