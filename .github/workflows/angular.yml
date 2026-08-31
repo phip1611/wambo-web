@@ -1,7 +1,7 @@
 name: Wambo Web Angular Build
 
 # Triggers the workflow on push or pull request events for any branch in a repository.
-on: [ push, pull_request, merge_group ]
+on: [push, pull_request, merge_group]
 
 jobs:
   # Tests that "ng serve" / "npm start" works.
@@ -18,7 +18,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: Install NPM Dependencies
-        run:  npm ci
+        run: npm ci
       - name: Test `ng serve`
         run: |
           npm run start_ci -- --host 127.0.0.1 > ng-serve.log 2>&1 &
@@ -45,11 +45,11 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: Install NPM Dependencies
-        run:  npm ci
+        run: npm ci
       - name: Run Unit-Tests
-        run:  npm test
+        run: npm test
       - name: Build Angular UI
-        run:  npm run build_prod
+        run: npm run build_prod
       - name: Upload Web-App
         uses: actions/upload-artifact@v7
         with:
@@ -69,7 +69,7 @@ jobs:
       - name: Move artifacts to expected directory
         run: mkdir dist && mv wambo-web dist
       - name: Build Docker Image
-        run:  docker build -t phip1611/wambo-web .
+        run: docker build -t phip1611/wambo-web .
 
   # Builds the web-app as Nix flake.
   build_nix:
@@ -98,6 +98,8 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: Install NPM Dependencies
-        run:  npm ci
+        run: npm ci
       - name: Run ES Lint
-        run:  npm run lint
+        run: npm run lint
+      - name: Check Formatting
+        run: npm run format:check

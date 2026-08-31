@@ -1,0 +1,11 @@
+.direnv
+dist/
+node_modules/
+result
+
+package-lock.json
+flake.lock
+
+src/assets/
+*.png
+*.xcf

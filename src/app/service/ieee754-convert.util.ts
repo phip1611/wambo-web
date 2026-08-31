@@ -1,5 +1,9 @@
 import BigNumber from 'bignumber.js';
-import { bignumberWholePartToUnsignedBitStringOfLength, BitLength, fixedLengthBitStringByteArrayLE } from './bit.util';
+import {
+  bignumberWholePartToUnsignedBitStringOfLength,
+  BitLength,
+  fixedLengthBitStringByteArrayLE,
+} from './bit.util';
 import { stringToExactLengthFromRightOrPadZerosLeft } from './string.util';
 
 /**
@@ -10,7 +14,10 @@ import { stringToExactLengthFromRightOrPadZerosLeft } from './string.util';
  */
 export function bigNumberWholePartBitsToF32Value(num: BigNumber): BigNumber {
   // BigNumber of "3.141" would become a binary 32 bit long string of decimal "3"
-  const wholePartBits = bignumberWholePartToUnsignedBitStringOfLength(num, BitLength.B32);
+  const wholePartBits = bignumberWholePartToUnsignedBitStringOfLength(
+    num,
+    BitLength.B32,
+  );
   // all bytes to a array of bit strings (WITHOUT 0b prefix)
   const bytes = fixedLengthBitStringByteArrayLE(wholePartBits);
 
@@ -35,7 +42,10 @@ export function bigNumberWholePartBitsToF32Value(num: BigNumber): BigNumber {
  */
 export function bigNumberWholePartBitsToF64Value(num: BigNumber): BigNumber {
   // BigNumber of "3.141" would become a binary 64 bit long string of decimal "3"
-  const wholePartBits = bignumberWholePartToUnsignedBitStringOfLength(num, BitLength.B64);
+  const wholePartBits = bignumberWholePartToUnsignedBitStringOfLength(
+    num,
+    BitLength.B64,
+  );
   // all bytes to a array of bit strings (WITHOUT 0b prefix)
   const bytes = fixedLengthBitStringByteArrayLE(wholePartBits);
 
@@ -131,15 +141,13 @@ export function bigNumberAsDoubleToIntegerHexBits(num: BigNumber): string {
 
   const u32LowerBitStr = stringToExactLengthFromRightOrPadZerosLeft(
     u32Lower.toString(16),
-    bit32LenInHexDigits
+    bit32LenInHexDigits,
   );
   const u32UpperBitStr = stringToExactLengthFromRightOrPadZerosLeft(
     u32Upper.toString(16),
-    bit32LenInHexDigits
+    bit32LenInHexDigits,
   );
 
   // + hex prefix
   return '0x' + u32UpperBitStr + u32LowerBitStr;
 }
-
-
