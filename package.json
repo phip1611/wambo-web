@@ -27,7 +27,7 @@
     "@angular/platform-browser": "21.2.14",
     "@angular/platform-browser-dynamic": "21.2.14",
     "@angular/router": "21.2.14",
-    "@angular/service-worker": "21.2.14",
+    "@angular/service-worker": "21.2.15",
     "bignumber.js": "11.0.0",
     "bootstrap": "5.3.8",
     "rxjs": "7.8.1",
